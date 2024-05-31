@@ -1,0 +1,238 @@
+﻿@inherits LayoutComponentBase
+
+<!-- Navbar -->
+<div class="sticky-top">
+    <header class="navbar navbar-expand-md sticky-top d-print-none">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-menu" aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <h1 class="navbar-brand navbar-brand-autodark d-none-navbar-horizontal pe-0 pe-md-3">
+                <a href="/" class="d-flex align-items-center text-decoration-none">
+                    <img src="../assets/ost-logo.png" width="110" height="32" style="height: 1.5rem" alt="OneSystem JSC" class="navbar-brand-image">
+                </a>
+            </h1>
+            <div class="navbar-nav flex-row order-md-last">
+                <div class="d-none d-md-flex">
+                    <a href="/index?theme=dark" class="nav-link px-0 hide-theme-dark" title="Enable dark mode" data-bs-toggle="tooltip"
+                       data-bs-placement="bottom">
+                        <!-- Download SVG icon from http://tabler-icons.io/i/moon -->
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" /></svg>
+                    </a>
+                    <a href="/index?theme=light" class="nav-link px-0 hide-theme-light" title="Enable light mode" data-bs-toggle="tooltip"
+                       data-bs-placement="bottom">
+                        <!-- Download SVG icon from http://tabler-icons.io/i/sun -->
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M12 12m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0" /><path d="M3 12h1m8 -9v1m8 8h1m-9 8v1m-6.4 -15.4l.7 .7m12.1 -.7l-.7 .7m0 11.4l.7 .7m-12.1 -.7l-.7 .7" /></svg>
+                    </a>
+                    <div class="nav-item dropdown d-none d-md-flex me-1">
+                        <a href="#" class="nav-link px-0" data-bs-toggle="dropdown" tabindex="-1" aria-label="Show notifications">
+                            <!-- Download SVG icon from http://tabler-icons.io/i/bell -->
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M10 5a2 2 0 1 1 4 0a7 7 0 0 1 4 6v3a4 4 0 0 0 2 3h-16a4 4 0 0 0 2 -3v-3a7 7 0 0 1 4 -6" /><path d="M9 17v1a3 3 0 0 0 6 0v-1" /></svg>
+                            <span class="badge bg-red"></span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-end dropdown-menu-card">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h3 class="card-title">Last updates</h3>
+                                </div>
+                                <div class="list-group list-group-flush list-group-hoverable">
+                                    <div class="list-group-item">
+                                        <div class="row align-items-center">
+                                            <div class="col-auto"><span class="status-dot status-dot-animated bg-red d-block"></span></div>
+                                            <div class="col text-truncate">
+                                                <a href="#" class="text-body d-block">Example 1</a>
+                                                <div class="d-block text-muted text-truncate mt-n1">
+                                                    Change deprecated html tags to text decoration classes (#29604)
+                                                </div>
+                                            </div>
+                                            <div class="col-auto">
+                                                <a href="#" class="list-group-item-actions">
+                                                    <!-- Download SVG icon from http://tabler-icons.io/i/star -->
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon text-muted" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M12 17.75l-6.172 3.245l1.179 -6.873l-5 -4.867l6.9 -1l3.086 -6.253l3.086 6.253l6.9 1l-5 4.867l1.179 6.873z" /></svg>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="list-group-item">
+                                        <div class="row align-items-center">
+                                            <div class="col-auto"><span class="status-dot d-block"></span></div>
+                                            <div class="col text-truncate">
+                                                <a href="#" class="text-body d-block">Example 2</a>
+                                                <div class="d-block text-muted text-truncate mt-n1">
+                                                    justify-content:between ⇒ justify-content:space-between (#29734)
+                                                </div>
+                                            </div>
+                                            <div class="col-auto">
+                                                <a href="#" class="list-group-item-actions show">
+                                                    <!-- Download SVG icon from http://tabler-icons.io/i/star -->
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon text-yellow" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M12 17.75l-6.172 3.245l1.179 -6.873l-5 -4.867l6.9 -1l3.086 -6.253l3.086 6.253l6.9 1l-5 4.867l1.179 6.873z" /></svg>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="list-group-item">
+                                        <div class="row align-items-center">
+                                            <div class="col-auto"><span class="status-dot d-block"></span></div>
+                                            <div class="col text-truncate">
+                                                <a href="#" class="text-body d-block">Example 3</a>
+                                                <div class="d-block text-muted text-truncate mt-n1">
+                                                    Update change-version.js (#29736)
+                                                </div>
+                                            </div>
+                                            <div class="col-auto">
+                                                <a href="#" class="list-group-item-actions">
+                                                    <!-- Download SVG icon from http://tabler-icons.io/i/star -->
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon text-muted" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M12 17.75l-6.172 3.245l1.179 -6.873l-5 -4.867l6.9 -1l3.086 -6.253l3.086 6.253l6.9 1l-5 4.867l1.179 6.873z" /></svg>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="list-group-item">
+                                        <div class="row align-items-center">
+                                            <div class="col-auto"><span class="status-dot status-dot-animated bg-green d-block"></span></div>
+                                            <div class="col text-truncate">
+                                                <a href="#" class="text-body d-block">Example 4</a>
+                                                <div class="d-block text-muted text-truncate mt-n1">
+                                                    Regenerate package-lock.json (#29730)
+                                                </div>
+                                            </div>
+                                            <div class="col-auto">
+                                                <a href="#" class="list-group-item-actions">
+                                                    <!-- Download SVG icon from http://tabler-icons.io/i/star -->
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon text-muted" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M12 17.75l-6.172 3.245l1.179 -6.873l-5 -4.867l6.9 -1l3.086 -6.253l3.086 6.253l6.9 1l-5 4.867l1.179 6.873z" /></svg>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link d-flex lh-1 text-reset p-0" data-bs-toggle="dropdown" aria-label="Open user menu">
+                        <img src="../assets/user.png" width="110" height="32" alt="HSystem" class="navbar-brand-image">
+                        <div class="d-none d-xl-block ps-2">
+                            <div style="font-size: 13px;">Nguyễn Tấn Hải</div>
+                            <div class="mt-1 text-muted" style="font-size: 11px;">Web Developer</div>
+                        </div>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                        <a href="#" class="dropdown-item">Status</a>
+                        <a href="./profile.html" class="dropdown-item">Profile</a>
+                        <a href="#" class="dropdown-item">Feedback</a>
+                        <div class="dropdown-divider"></div>
+                        <a href="./settings.html" class="dropdown-item">Settings</a>
+                        <a href="/logout" class="dropdown-item">Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <header class="navbar-expand-md">
+        <div class="collapse navbar-collapse" id="navbar-menu">
+            <div class="navbar">
+                <div class="container-fluid">
+                    <ul class="navbar-nav">
+                        @foreach (var item in ListMenus)
+                        {
+                            @if (item.Level == 1)
+                            {
+                                var lstMenuLevel2 = ListMenus.Where(m => m.ParentCode == item.MenuCode && m.Level == 2).ToList();
+                                if (lstMenuLevel2.Any())
+                                {
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" href="#@item.MenuCode" data-bs-toggle="dropdown" data-bs-auto-close="outside" role="button" aria-expanded="false">
+                                            @if (!string.IsNullOrEmpty(item.Icon))
+                                            {
+                                                <span class="nav-link-icon d-md-none d-lg-inline-block">
+                                                    @((MarkupString)$"{item.Icon}")
+                                                </span>
+                                            }
+                                            <span class="nav-link-title">
+                                                @item.MenuName
+                                            </span>
+                                        </a>
+                                        <div class="dropdown-menu">
+                                            @foreach (var item1 in lstMenuLevel2)
+                                            {
+                                                var lstLevel3 = ListMenus.Where(m => m.ParentCode == item1.MenuCode && m.Level == 3).ToList();
+                                                if (lstLevel3.Any())
+                                                {
+                                                    <div class="dropdown-menu-columns">
+                                                        <div class="dropdown-menu-column">
+                                                            <div class="dropend">
+                                                                <a class="dropdown-item dropdown-toggle" href="#@item1.MenuCode"
+                                                                   data-bs-toggle="dropdown" data-bs-auto-close="outside" role="button" aria-expanded="false">
+                                                                    @item1.MenuName
+                                                                </a>
+                                                                <div class="dropdown-menu">
+                                                                    @foreach (var item2 in lstLevel3)
+                                                                    {
+                                                                        <a href="@item2.Link" class="dropdown-item">
+                                                                            @item2.MenuName
+                                                                        </a>
+                                                                    }
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                }
+                                                else
+                                                {
+                                                    <a class="dropdown-item" href="@item1.Link">
+                                                        @item1.MenuName
+                                                    </a>
+                                                }
+
+                                            }
+                                        </div>
+                                    </li>
+                                }
+                                else
+                                {
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="@item.Link">
+                                            @if (!string.IsNullOrEmpty(item.Icon))
+                                            {
+                                                <span class="nav-link-icon d-md-none d-lg-inline-block">
+                                                    @((MarkupString)$"{item.Icon}")
+                                                </span>
+                                            }
+                                            <span class="nav-link-title">
+                                                @item.MenuName
+                                            </span>
+                                        </a>
+                                    </li>
+                                }
+                            }
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+</div>
+<div class="page-wrapper" style="margin: 4px 2px 2px 2px">
+    @Body
+</div>
+
+<div id="blazor-error-ui">
+    An unhandled error has occurred.
+    <a href="" class="reload">Reload</a>
+    <a class="dismiss">🗙</a>
+</div>
+
+@code{
+    public List<MenuModel> ListMenus { get; set; } = new List<MenuModel>();
+    protected override void OnInitialized()
+    {
+        string jMenu = "[{\"Id\":1,\"MenuCode\":1,\"MenuName\":\"Nhân sự\",\"Icon\":\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" class=\\\"icon\\\" width=\\\"24\\\" height=\\\"24\\\" viewBox=\\\"0 0 24 24\\\" stroke-width=\\\"2\\\" stroke=\\\"currentColor\\\" fill=\\\"none\\\" stroke-linecap=\\\"round\\\" stroke-linejoin=\\\"round\\\"><path stroke=\\\"none\\\" d=\\\"M0 0h24v24H0z\\\" fill=\\\"none\\\" /><path d=\\\"M5 12l-2 0l9 -9l9 9l-2 0\\\" /><path d=\\\"M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7\\\" /><path d=\\\"M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6\\\" /></svg>\",\"IconType\":\"SVG\",\"Link\":\"/trang-chu\",\"Controller\":\"IndexController\",\"ParentCode\":\"NULL\",\"Level\":1,\"IsVisible\":1,\"OrdinalNumber\":1},{\"Id\":11,\"MenuCode\":\"0001-0001\",\"MenuName\":\"Danh sách hợp đồng\",\"Icon\":\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" class=\\\"icon\\\" width=\\\"24\\\" height=\\\"24\\\" viewBox=\\\"0 0 24 24\\\" stroke-width=\\\"2\\\" stroke=\\\"currentColor\\\" fill=\\\"none\\\" stroke-linecap=\\\"round\\\" stroke-linejoin=\\\"round\\\"><path stroke=\\\"none\\\" d=\\\"M0 0h24v24H0z\\\" fill=\\\"none\\\" /><path d=\\\"M12 3l8 4.5l0 9l-8 4.5l-8 -4.5l0 -9l8 -4.5\\\" /><path d=\\\"M12 12l8 -4.5\\\" /><path d=\\\"M12 12l0 9\\\" /><path d=\\\"M12 12l-8 -4.5\\\" /><path d=\\\"M16 5.25l-8 4.5\\\" /></svg>\",\"IconType\":\"SVG\",\"Link\":\"/trang-chu\",\"Controller\":\"IndexController\",\"ParentCode\":1,\"Level\":2,\"IsVisible\":1,\"OrdinalNumber\":1},{\"Id\":12,\"MenuCode\":\"0001-0002\",\"MenuName\":\"Danh sách phụ lục hợp đồng\",\"Icon\":\"NULL\",\"IconType\":\"NULL\",\"Link\":\"/trang-chu\",\"Controller\":\"IndexController\",\"ParentCode\":1,\"Level\":2,\"IsVisible\":1,\"OrdinalNumber\":2},{\"Id\":13,\"MenuCode\":\"0001-0003\",\"MenuName\":\"Chứng từ đề nghị\",\"Icon\":\"NULL\",\"IconType\":\"NULL\",\"Link\":\"/trang-chu\",\"Controller\":\"IndexController\",\"ParentCode\":1,\"Level\":2,\"IsVisible\":1,\"OrdinalNumber\":3},{\"Id\":14,\"MenuCode\":\"0001-0004\",\"MenuName\":\"Chứng từ quyết định\",\"Icon\":\"NULL\",\"IconType\":\"NULL\",\"Link\":\"/trang-chu\",\"Controller\":\"IndexController\",\"ParentCode\":1,\"Level\":2,\"IsVisible\":1,\"OrdinalNumber\":4},{\"Id\":15,\"MenuCode\":\"0001-0005\",\"MenuName\":\"Hồ sơ nhân sự\",\"Icon\":\"NULL\",\"IconType\":\"NULL\",\"Link\":\"/trang-chu\",\"Controller\":\"IndexController\",\"ParentCode\":1,\"Level\":2,\"IsVisible\":1,\"OrdinalNumber\":5},{\"Id\":2,\"MenuCode\":2,\"MenuName\":\"Tuyển dụng\",\"Icon\":\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" class=\\\"icon\\\" width=\\\"24\\\" height=\\\"24\\\" viewBox=\\\"0 0 24 24\\\" stroke-width=\\\"2\\\" stroke=\\\"currentColor\\\" fill=\\\"none\\\" stroke-linecap=\\\"round\\\" stroke-linejoin=\\\"round\\\"><path stroke=\\\"none\\\" d=\\\"M0 0h24v24H0z\\\" fill=\\\"none\\\" /><path d=\\\"M12 3l8 4.5l0 9l-8 4.5l-8 -4.5l0 -9l8 -4.5\\\" /><path d=\\\"M12 12l8 -4.5\\\" /><path d=\\\"M12 12l0 9\\\" /><path d=\\\"M12 12l-8 -4.5\\\" /><path d=\\\"M16 5.25l-8 4.5\\\" /></svg>\",\"IconType\":\"SVG\",\"Link\":\"/trang-chu\",\"Controller\":\"IndexController\",\"ParentCode\":\"NULL\",\"Level\":1,\"IsVisible\":1,\"OrdinalNumber\":2},{\"Id\":16,\"MenuCode\":\"0002-0001\",\"MenuName\":\"Định biên nhân sự phòng ban\",\"Icon\":\"NULL\",\"IconType\":\"NULL\",\"Link\":\"/trang-chu\",\"Controller\":\"IndexController\",\"ParentCode\":2,\"Level\":2,\"IsVisible\":1,\"OrdinalNumber\":1},{\"Id\":17,\"MenuCode\":\"0002-0002\",\"MenuName\":\"Yêu cầu tuyển dụng\",\"Icon\":\"NULL\",\"IconType\":\"NULL\",\"Link\":\"/trang-chu\",\"Controller\":\"IndexController\",\"ParentCode\":2,\"Level\":2,\"IsVisible\":1,\"OrdinalNumber\":2},{\"Id\":18,\"MenuCode\":\"0002-0003\",\"MenuName\":\"Danh sách yêu cầu tuyển dụng\",\"Icon\":\"NULL\",\"IconType\":\"NULL\",\"Link\":\"/trang-chu\",\"Controller\":\"IndexController\",\"ParentCode\":2,\"Level\":2,\"IsVisible\":1,\"OrdinalNumber\":3},{\"Id\":19,\"MenuCode\":\"0002-0004\",\"MenuName\":\"Ứng viên\",\"Icon\":\"NULL\",\"IconType\":\"NULL\",\"Link\":\"/trang-chu\",\"Controller\":\"IndexController\",\"ParentCode\":2,\"Level\":2,\"IsVisible\":1,\"OrdinalNumber\":4},{\"Id\":20,\"MenuCode\":\"0002-0005\",\"MenuName\":\"Lập kế hoạch tuyển dụng\",\"Icon\":\"NULL\",\"IconType\":\"NULL\",\"Link\":\"/trang-chu\",\"Controller\":\"IndexController\",\"ParentCode\":2,\"Level\":2,\"IsVisible\":1,\"OrdinalNumber\":5},{\"Id\":21,\"MenuCode\":\"0002-0006\",\"MenuName\":\"Đợt tuyển dụng\",\"Icon\":\"NULL\",\"IconType\":\"NULL\",\"Link\":\"/trang-chu\",\"Controller\":\"IndexController\",\"ParentCode\":2,\"Level\":2,\"IsVisible\":1,\"OrdinalNumber\":6},{\"Id\":22,\"MenuCode\":\"0002-0007\",\"MenuName\":\"Tổng hợp kết quả tuyển dụng\",\"Icon\":\"NULL\",\"IconType\":\"NULL\",\"Link\":\"/trang-chu\",\"Controller\":\"IndexController\",\"ParentCode\":2,\"Level\":2,\"IsVisible\":1,\"OrdinalNumber\":7},{\"Id\":23,\"MenuCode\":\"0002-0008\",\"MenuName\":\"Danh mục mô tả công việc\",\"Icon\":\"NULL\",\"IconType\":\"NULL\",\"Link\":\"/trang-chu\",\"Controller\":\"IndexController\",\"ParentCode\":2,\"Level\":2,\"IsVisible\":1,\"OrdinalNumber\":8},{\"Id\":24,\"MenuCode\":\"0002-0009\",\"MenuName\":\"Đánh giá ứng viên\",\"Icon\":\"NULL\",\"IconType\":\"NULL\",\"Link\":\"/trang-chu\",\"Controller\":\"IndexController\",\"ParentCode\":2,\"Level\":2,\"IsVisible\":1,\"OrdinalNumber\":10},{\"Id\":3,\"MenuCode\":3,\"MenuName\":\"Đào tạo\",\"Icon\":\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" class=\\\"icon\\\" width=\\\"24\\\" height=\\\"24\\\" viewBox=\\\"0 0 24 24\\\" stroke-width=\\\"2\\\" stroke=\\\"currentColor\\\" fill=\\\"none\\\" stroke-linecap=\\\"round\\\" stroke-linejoin=\\\"round\\\"><path stroke=\\\"none\\\" d=\\\"M0 0h24v24H0z\\\" fill=\\\"none\\\" /><path d=\\\"M12 3l8 4.5l0 9l-8 4.5l-8 -4.5l0 -9l8 -4.5\\\" /><path d=\\\"M12 12l8 -4.5\\\" /><path d=\\\"M12 12l0 9\\\" /><path d=\\\"M12 12l-8 -4.5\\\" /><path d=\\\"M16 5.25l-8 4.5\\\" /></svg>\",\"IconType\":\"SVG\",\"Link\":\"/trang-chu\",\"Controller\":\"IndexController\",\"ParentCode\":\"NULL\",\"Level\":1,\"IsVisible\":1,\"OrdinalNumber\":3},{\"Id\":4,\"MenuCode\":4,\"MenuName\":\"Công phép\",\"Icon\":\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" class=\\\"icon\\\" width=\\\"24\\\" height=\\\"24\\\" viewBox=\\\"0 0 24 24\\\" stroke-width=\\\"2\\\" stroke=\\\"currentColor\\\" fill=\\\"none\\\" stroke-linecap=\\\"round\\\" stroke-linejoin=\\\"round\\\"><path stroke=\\\"none\\\" d=\\\"M0 0h24v24H0z\\\" fill=\\\"none\\\" /><path d=\\\"M12 3l8 4.5l0 9l-8 4.5l-8 -4.5l0 -9l8 -4.5\\\" /><path d=\\\"M12 12l8 -4.5\\\" /><path d=\\\"M12 12l0 9\\\" /><path d=\\\"M12 12l-8 -4.5\\\" /><path d=\\\"M16 5.25l-8 4.5\\\" /></svg>\",\"IconType\":\"SVG\",\"Link\":\"/trang-chu\",\"Controller\":\"IndexController\",\"ParentCode\":\"NULL\",\"Level\":1,\"IsVisible\":1,\"OrdinalNumber\":4},{\"Id\":25,\"MenuCode\":\"0004-0001\",\"MenuName\":\"Tính công\",\"Icon\":\"NULL\",\"IconType\":\"NULL\",\"Link\":\"/trang-chu\",\"Controller\":\"IndexController\",\"ParentCode\":4,\"Level\":2,\"IsVisible\":1,\"OrdinalNumber\":1},{\"Id\":27,\"MenuCode\":\"0004-0001-0001\",\"MenuName\":\"Tính công\",\"Icon\":\"NULL\",\"IconType\":\"NULL\",\"Link\":\"/trang-chu\",\"Controller\":\"IndexController\",\"ParentCode\":\"0004-0001\",\"Level\":3,\"IsVisible\":1,\"OrdinalNumber\":1},{\"Id\":28,\"MenuCode\":\"0004-0001-0002\",\"MenuName\":\"Tính công tăng ca/giờ làm thêm\",\"Icon\":\"NULL\",\"IconType\":\"NULL\",\"Link\":\"/trang-chu\",\"Controller\":\"IndexController\",\"ParentCode\":\"0004-0001\",\"Level\":3,\"IsVisible\":1,\"OrdinalNumber\":2},{\"Id\":29,\"MenuCode\":\"0004-0001-0003\",\"MenuName\":\"Tổng hợp vân tay\",\"Icon\":\"NULL\",\"IconType\":\"NULL\",\"Link\":\"/trang-chu\",\"Controller\":\"IndexController\",\"ParentCode\":\"0004-0001\",\"Level\":3,\"IsVisible\":1,\"OrdinalNumber\":3},{\"Id\":30,\"MenuCode\":\"0004-0001-0004\",\"MenuName\":\"Theo dõi tăng ca/giờ làm thêm\",\"Icon\":\"NULL\",\"IconType\":\"NULL\",\"Link\":\"/trang-chu\",\"Controller\":\"IndexController\",\"ParentCode\":\"0004-0001\",\"Level\":3,\"IsVisible\":1,\"OrdinalNumber\":4},{\"Id\":31,\"MenuCode\":\"0004-0001-0005\",\"MenuName\":\"Quản lý phép năm\",\"Icon\":\"NULL\",\"IconType\":\"NULL\",\"Link\":\"/trang-chu\",\"Controller\":\"IndexController\",\"ParentCode\":\"0004-0001\",\"Level\":3,\"IsVisible\":1,\"OrdinalNumber\":5},{\"Id\":26,\"MenuCode\":\"0004-0002\",\"MenuName\":\"Chứng từ đề nghị\",\"Icon\":\"NULL\",\"IconType\":\"NULL\",\"Link\":\"/trang-chu\",\"Controller\":\"IndexController\",\"ParentCode\":4,\"Level\":2,\"IsVisible\":1,\"OrdinalNumber\":2},{\"Id\":32,\"MenuCode\":\"0004-0002-0001\",\"MenuName\":\"Phân công ca làm việc\",\"Icon\":\"NULL\",\"IconType\":\"NULL\",\"Link\":\"/trang-chu\",\"Controller\":\"IndexController\",\"ParentCode\":\"0004-0002\",\"Level\":3,\"IsVisible\":1,\"OrdinalNumber\":1},{\"Id\":33,\"MenuCode\":\"0004-0002-0002\",\"MenuName\":\"Đăng kí lịch trực\",\"Icon\":\"NULL\",\"IconType\":\"NULL\",\"Link\":\"/trang-chu\",\"Controller\":\"IndexController\",\"ParentCode\":\"0004-0002\",\"Level\":3,\"IsVisible\":1,\"OrdinalNumber\":2},{\"Id\":34,\"MenuCode\":\"0004-0002-0003\",\"MenuName\":\"Đăng kí lịch lễ\",\"Icon\":\"NULL\",\"IconType\":\"NULL\",\"Link\":\"/trang-chu\",\"Controller\":\"IndexController\",\"ParentCode\":\"0004-0002\",\"Level\":3,\"IsVisible\":1,\"OrdinalNumber\":3},{\"Id\":35,\"MenuCode\":\"0004-0002-0004\",\"MenuName\":\"Đăng kí thai sản\",\"Icon\":\"NULL\",\"IconType\":\"NULL\",\"Link\":\"/trang-chu\",\"Controller\":\"IndexController\",\"ParentCode\":\"0004-0002\",\"Level\":3,\"IsVisible\":1,\"OrdinalNumber\":4},{\"Id\":36,\"MenuCode\":\"0004-0002-0005\",\"MenuName\":\"Đăng kí đổi ca\",\"Icon\":\"NULL\",\"IconType\":\"NULL\",\"Link\":\"/trang-chu\",\"Controller\":\"IndexController\",\"ParentCode\":\"0004-0002\",\"Level\":3,\"IsVisible\":1,\"OrdinalNumber\":5},{\"Id\":37,\"MenuCode\":\"0004-0002-0006\",\"MenuName\":\"Xin phép nghỉ\",\"Icon\":\"NULL\",\"IconType\":\"NULL\",\"Link\":\"/trang-chu\",\"Controller\":\"IndexController\",\"ParentCode\":\"0004-0002\",\"Level\":3,\"IsVisible\":1,\"OrdinalNumber\":6},{\"Id\":38,\"MenuCode\":\"0004-0002-0007\",\"MenuName\":\"Đề nghị làm thêm\",\"Icon\":\"NULL\",\"IconType\":\"NULL\",\"Link\":\"/de-nghi-lam-them\",\"Controller\":\"IndexController\",\"ParentCode\":\"0004-0002\",\"Level\":3,\"IsVisible\":1,\"OrdinalNumber\":7},{\"Id\":39,\"MenuCode\":\"0004-0002-0008\",\"MenuName\":\"Đề nghị công tác\",\"Icon\":\"NULL\",\"IconType\":\"NULL\",\"Link\":\"/trang-chu\",\"Controller\":\"IndexController\",\"ParentCode\":\"0004-0002\",\"Level\":3,\"IsVisible\":1,\"OrdinalNumber\":8},{\"Id\":40,\"MenuCode\":\"0004-0002-0009\",\"MenuName\":\"Xin ra cổng trong giờ\",\"Icon\":\"NULL\",\"IconType\":\"NULL\",\"Link\":\"/trang-chu\",\"Controller\":\"IndexController\",\"ParentCode\":\"0004-0002\",\"Level\":3,\"IsVisible\":1,\"OrdinalNumber\":9},{\"Id\":41,\"MenuCode\":\"0004-0002-0010\",\"MenuName\":\"Đăng kí khách vào ra\",\"Icon\":\"NULL\",\"IconType\":\"NULL\",\"Link\":\"/trang-chu\",\"Controller\":\"IndexController\",\"ParentCode\":\"0004-0002\",\"Level\":3,\"IsVisible\":1,\"OrdinalNumber\":10},{\"Id\":42,\"MenuCode\":\"0004-0002-0011\",\"MenuName\":\"Theo dõi NV ra vào cổng\",\"Icon\":\"NULL\",\"IconType\":\"NULL\",\"Link\":\"/trang-chu\",\"Controller\":\"IndexController\",\"ParentCode\":\"0004-0002\",\"Level\":3,\"IsVisible\":1,\"OrdinalNumber\":11},{\"Id\":43,\"MenuCode\":\"0004-0002-0012\",\"MenuName\":\"Xác nhận giờ công\",\"Icon\":\"NULL\",\"IconType\":\"NULL\",\"Link\":\"/trang-chu\",\"Controller\":\"IndexController\",\"ParentCode\":\"0004-0002\",\"Level\":3,\"IsVisible\":1,\"OrdinalNumber\":12},{\"Id\":5,\"MenuCode\":5,\"MenuName\":\"Đánh giá\",\"Icon\":\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" class=\\\"icon\\\" width=\\\"24\\\" height=\\\"24\\\" viewBox=\\\"0 0 24 24\\\" stroke-width=\\\"2\\\" stroke=\\\"currentColor\\\" fill=\\\"none\\\" stroke-linecap=\\\"round\\\" stroke-linejoin=\\\"round\\\"><path stroke=\\\"none\\\" d=\\\"M0 0h24v24H0z\\\" fill=\\\"none\\\" /><path d=\\\"M12 3l8 4.5l0 9l-8 4.5l-8 -4.5l0 -9l8 -4.5\\\" /><path d=\\\"M12 12l8 -4.5\\\" /><path d=\\\"M12 12l0 9\\\" /><path d=\\\"M12 12l-8 -4.5\\\" /><path d=\\\"M16 5.25l-8 4.5\\\" /></svg>\",\"IconType\":\"SVG\",\"Link\":\"/trang-chu\",\"Controller\":\"IndexController\",\"ParentCode\":\"NULL\",\"Level\":1,\"IsVisible\":1,\"OrdinalNumber\":5},{\"Id\":44,\"MenuCode\":\"0005-0001\",\"MenuName\":\"Danh sách đánh giá công việc\",\"Icon\":\"NULL\",\"IconType\":\"NULL\",\"Link\":\"/trang-chu\",\"Controller\":\"IndexController\",\"ParentCode\":5,\"Level\":2,\"IsVisible\":1,\"OrdinalNumber\":1},{\"Id\":45,\"MenuCode\":\"0005-0002\",\"MenuName\":\"Đanh giá công việc\",\"Icon\":\"NULL\",\"IconType\":\"NULL\",\"Link\":\"/trang-chu\",\"Controller\":\"IndexController\",\"ParentCode\":5,\"Level\":2,\"IsVisible\":1,\"OrdinalNumber\":2},{\"Id\":6,\"MenuCode\":6,\"MenuName\":\"Tình lương\",\"Icon\":\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" class=\\\"icon\\\" width=\\\"24\\\" height=\\\"24\\\" viewBox=\\\"0 0 24 24\\\" stroke-width=\\\"2\\\" stroke=\\\"currentColor\\\" fill=\\\"none\\\" stroke-linecap=\\\"round\\\" stroke-linejoin=\\\"round\\\"><path stroke=\\\"none\\\" d=\\\"M0 0h24v24H0z\\\" fill=\\\"none\\\" /><path d=\\\"M12 3l8 4.5l0 9l-8 4.5l-8 -4.5l0 -9l8 -4.5\\\" /><path d=\\\"M12 12l8 -4.5\\\" /><path d=\\\"M12 12l0 9\\\" /><path d=\\\"M12 12l-8 -4.5\\\" /><path d=\\\"M16 5.25l-8 4.5\\\" /></svg>\",\"IconType\":\"SVG\",\"Link\":\"/trang-chu\",\"Controller\":\"IndexController\",\"ParentCode\":\"NULL\",\"Level\":1,\"IsVisible\":1,\"OrdinalNumber\":6},{\"Id\":46,\"MenuCode\":\"0006-0001\",\"MenuName\":\"Thông tin tính lương\",\"Icon\":\"NULL\",\"IconType\":\"NULL\",\"Link\":\"/trang-chu\",\"Controller\":\"IndexController\",\"ParentCode\":6,\"Level\":2,\"IsVisible\":1,\"OrdinalNumber\":1},{\"Id\":51,\"MenuCode\":\"0006-0001-0001\",\"MenuName\":\"Danh sách điều chỉnh lương\",\"Icon\":\"NULL\",\"IconType\":\"NULL\",\"Link\":\"/trang-chu\",\"Controller\":\"IndexController\",\"ParentCode\":\"0006-0001\",\"Level\":3,\"IsVisible\":1,\"OrdinalNumber\":1},{\"Id\":52,\"MenuCode\":\"0006-0001-0002\",\"MenuName\":\"Thông tin lương tháng\",\"Icon\":\"NULL\",\"IconType\":\"NULL\",\"Link\":\"/trang-chu\",\"Controller\":\"IndexController\",\"ParentCode\":\"0006-0001\",\"Level\":3,\"IsVisible\":1,\"OrdinalNumber\":2},{\"Id\":53,\"MenuCode\":\"0006-0001-0003\",\"MenuName\":\"Chốt công & lương\",\"Icon\":\"NULL\",\"IconType\":\"NULL\",\"Link\":\"/trang-chu\",\"Controller\":\"IndexController\",\"ParentCode\":\"0006-0001\",\"Level\":3,\"IsVisible\":1,\"OrdinalNumber\":3},{\"Id\":47,\"MenuCode\":\"0006-0002\",\"MenuName\":\"Thiết lập\",\"Icon\":\"NULL\",\"IconType\":\"NULL\",\"Link\":\"/trang-chu\",\"Controller\":\"IndexController\",\"ParentCode\":6,\"Level\":2,\"IsVisible\":1,\"OrdinalNumber\":2},{\"Id\":54,\"MenuCode\":\"0006-0002-0001\",\"MenuName\":\"Sản lượng thực tế\",\"Icon\":\"NULL\",\"IconType\":\"NULL\",\"Link\":\"/trang-chu\",\"Controller\":\"IndexController\",\"ParentCode\":\"0006-0002\",\"Level\":3,\"IsVisible\":1,\"OrdinalNumber\":1},{\"Id\":55,\"MenuCode\":\"0006-0002-0002\",\"MenuName\":\"Danh mục hệ số thâm niên\",\"Icon\":\"NULL\",\"IconType\":\"NULL\",\"Link\":\"/trang-chu\",\"Controller\":\"IndexController\",\"ParentCode\":\"0006-0002\",\"Level\":3,\"IsVisible\":1,\"OrdinalNumber\":2},{\"Id\":56,\"MenuCode\":\"0006-0002-0003\",\"MenuName\":\"Danh mục sản lượng khoáng\",\"Icon\":\"NULL\",\"IconType\":\"NULL\",\"Link\":\"/trang-chu\",\"Controller\":\"IndexController\",\"ParentCode\":\"0006-0002\",\"Level\":3,\"IsVisible\":1,\"OrdinalNumber\":3},{\"Id\":57,\"MenuCode\":\"0006-0002-0004\",\"MenuName\":\"Định mức sản lượng\",\"Icon\":\"NULL\",\"IconType\":\"NULL\",\"Link\":\"/trang-chu\",\"Controller\":\"IndexController\",\"ParentCode\":\"0006-0002\",\"Level\":3,\"IsVisible\":1,\"OrdinalNumber\":4},{\"Id\":58,\"MenuCode\":\"0006-0002-0005\",\"MenuName\":\"Thiết lập hệ số tính lương khoáng\",\"Icon\":\"NULL\",\"IconType\":\"NULL\",\"Link\":\"/trang-chu\",\"Controller\":\"IndexController\",\"ParentCode\":\"0006-0002\",\"Level\":3,\"IsVisible\":1,\"OrdinalNumber\":5},{\"Id\":59,\"MenuCode\":\"0006-0002-0006\",\"MenuName\":\"Thiết lập loại phân bổ lương\",\"Icon\":\"NULL\",\"IconType\":\"NULL\",\"Link\":\"/trang-chu\",\"Controller\":\"IndexController\",\"ParentCode\":\"0006-0002\",\"Level\":3,\"IsVisible\":1,\"OrdinalNumber\":6},{\"Id\":60,\"MenuCode\":\"0006-0002-0007\",\"MenuName\":\"Thiết lập nhân viên theo dây chuyền\",\"Icon\":\"NULL\",\"IconType\":\"NULL\",\"Link\":\"/trang-chu\",\"Controller\":\"IndexController\",\"ParentCode\":\"0006-0002\",\"Level\":3,\"IsVisible\":1,\"OrdinalNumber\":7},{\"Id\":48,\"MenuCode\":\"0006-0003\",\"MenuName\":\"Tính lương\",\"Icon\":\"NULL\",\"IconType\":\"NULL\",\"Link\":\"/trang-chu\",\"Controller\":\"IndexController\",\"ParentCode\":6,\"Level\":2,\"IsVisible\":1,\"OrdinalNumber\":3},{\"Id\":61,\"MenuCode\":\"0006-0003-0001\",\"MenuName\":\"Tính lương tháng\",\"Icon\":\"NULL\",\"IconType\":\"NULL\",\"Link\":\"/trang-chu\",\"Controller\":\"IndexController\",\"ParentCode\":\"0006-0003\",\"Level\":3,\"IsVisible\":1,\"OrdinalNumber\":1},{\"Id\":62,\"MenuCode\":\"0006-0003-0002\",\"MenuName\":\"Tính lương khoáng\",\"Icon\":\"NULL\",\"IconType\":\"NULL\",\"Link\":\"/trang-chu\",\"Controller\":\"IndexController\",\"ParentCode\":\"0006-0003\",\"Level\":3,\"IsVisible\":1,\"OrdinalNumber\":2},{\"Id\":63,\"MenuCode\":\"0006-0003-0003\",\"MenuName\":\"Phân bổ lương\",\"Icon\":\"NULL\",\"IconType\":\"NULL\",\"Link\":\"/trang-chu\",\"Controller\":\"IndexController\",\"ParentCode\":\"0006-0003\",\"Level\":3,\"IsVisible\":1,\"OrdinalNumber\":3},{\"Id\":64,\"MenuCode\":\"0006-0003-0004\",\"MenuName\":\"Quyết toán thuế TNCN\",\"Icon\":\"NULL\",\"IconType\":\"NULL\",\"Link\":\"/trang-chu\",\"Controller\":\"IndexController\",\"ParentCode\":\"0006-0003\",\"Level\":3,\"IsVisible\":1,\"OrdinalNumber\":4},{\"Id\":49,\"MenuCode\":\"0006-0004\",\"MenuName\":\"Chứng từ - Quyết định\",\"Icon\":\"NULL\",\"IconType\":\"NULL\",\"Link\":\"/trang-chu\",\"Controller\":\"IndexController\",\"ParentCode\":6,\"Level\":2,\"IsVisible\":1,\"OrdinalNumber\":4},{\"Id\":65,\"MenuCode\":\"0006-0004-0001\",\"MenuName\":\"Điều chỉnh quỹ lương\",\"Icon\":\"NULL\",\"IconType\":\"NULL\",\"Link\":\"/trang-chu\",\"Controller\":\"IndexController\",\"ParentCode\":\"0006-0004\",\"Level\":3,\"IsVisible\":1,\"OrdinalNumber\":1},{\"Id\":66,\"MenuCode\":\"0006-0004-0002\",\"MenuName\":\"Truy thu trích nộp\",\"Icon\":\"NULL\",\"IconType\":\"NULL\",\"Link\":\"/trang-chu\",\"Controller\":\"IndexController\",\"ParentCode\":\"0006-0004\",\"Level\":3,\"IsVisible\":1,\"OrdinalNumber\":2},{\"Id\":67,\"MenuCode\":\"0006-0004-0003\",\"MenuName\":\"Khen thưởng - Phụ cấp\",\"Icon\":\"NULL\",\"IconType\":\"NULL\",\"Link\":\"/trang-chu\",\"Controller\":\"IndexController\",\"ParentCode\":\"0006-0004\",\"Level\":3,\"IsVisible\":1,\"OrdinalNumber\":3},{\"Id\":50,\"MenuCode\":\"0006-0005\",\"MenuName\":\"Hạch toán SAP\",\"Icon\":\"NULL\",\"IconType\":\"NULL\",\"Link\":\"/trang-chu\",\"Controller\":\"IndexController\",\"ParentCode\":6,\"Level\":2,\"IsVisible\":1,\"OrdinalNumber\":5},{\"Id\":68,\"MenuCode\":\"0006-0005-0001\",\"MenuName\":\"Chứng từ hạch toán Vissai\",\"Icon\":\"NULL\",\"IconType\":\"NULL\",\"Link\":\"/trang-chu\",\"Controller\":\"IndexController\",\"ParentCode\":\"0006-0005\",\"Level\":3,\"IsVisible\":1,\"OrdinalNumber\":1},{\"Id\":69,\"MenuCode\":\"0006-0005-0002\",\"MenuName\":\"Thiết lập hạch toán\",\"Icon\":\"NULL\",\"IconType\":\"NULL\",\"Link\":\"/trang-chu\",\"Controller\":\"IndexController\",\"ParentCode\":\"0006-0005\",\"Level\":3,\"IsVisible\":1,\"OrdinalNumber\":2},{\"Id\":7,\"MenuCode\":7,\"MenuName\":\"Văn phòng phẩm\",\"Icon\":\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" class=\\\"icon\\\" width=\\\"24\\\" height=\\\"24\\\" viewBox=\\\"0 0 24 24\\\" stroke-width=\\\"2\\\" stroke=\\\"currentColor\\\" fill=\\\"none\\\" stroke-linecap=\\\"round\\\" stroke-linejoin=\\\"round\\\"><path stroke=\\\"none\\\" d=\\\"M0 0h24v24H0z\\\" fill=\\\"none\\\" /><path d=\\\"M12 3l8 4.5l0 9l-8 4.5l-8 -4.5l0 -9l8 -4.5\\\" /><path d=\\\"M12 12l8 -4.5\\\" /><path d=\\\"M12 12l0 9\\\" /><path d=\\\"M12 12l-8 -4.5\\\" /><path d=\\\"M16 5.25l-8 4.5\\\" /></svg>\",\"IconType\":\"SVG\",\"Link\":\"/trang-chu\",\"Controller\":\"IndexController\",\"ParentCode\":\"NULL\",\"Level\":1,\"IsVisible\":1,\"OrdinalNumber\":7},{\"Id\":70,\"MenuCode\":\"0007-0001\",\"MenuName\":\"Đề nghị cấp văn phòng phẩm\",\"Icon\":\"NULL\",\"IconType\":\"NULL\",\"Link\":\"/trang-chu\",\"Controller\":\"IndexController\",\"ParentCode\":7,\"Level\":2,\"IsVisible\":1,\"OrdinalNumber\":1},{\"Id\":71,\"MenuCode\":\"0007-0002\",\"MenuName\":\"Đề nghị mua văn phòng phẩm\",\"Icon\":\"NULL\",\"IconType\":\"NULL\",\"Link\":\"/trang-chu\",\"Controller\":\"IndexController\",\"ParentCode\":7,\"Level\":2,\"IsVisible\":1,\"OrdinalNumber\":2},{\"Id\":72,\"MenuCode\":\"0007-0003\",\"MenuName\":\"Phiếu nhập văn phòng phẩm\",\"Icon\":\"NULL\",\"IconType\":\"NULL\",\"Link\":\"/trang-chu\",\"Controller\":\"IndexController\",\"ParentCode\":7,\"Level\":2,\"IsVisible\":1,\"OrdinalNumber\":3},{\"Id\":73,\"MenuCode\":\"0007-0004\",\"MenuName\":\"Phiếu xuất văn phòng phẩm\",\"Icon\":\"NULL\",\"IconType\":\"NULL\",\"Link\":\"/trang-chu\",\"Controller\":\"IndexController\",\"ParentCode\":7,\"Level\":2,\"IsVisible\":1,\"OrdinalNumber\":4},{\"Id\":74,\"MenuCode\":\"0007-0005\",\"MenuName\":\"Danh sách phiếu nhập - xuất văn phầm phẩm\",\"Icon\":\"NULL\",\"IconType\":\"NULL\",\"Link\":\"/trang-chu\",\"Controller\":\"IndexController\",\"ParentCode\":7,\"Level\":2,\"IsVisible\":1,\"OrdinalNumber\":5},{\"Id\":8,\"MenuCode\":8,\"MenuName\":\"Danh mục\",\"Icon\":\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" class=\\\"icon\\\" width=\\\"24\\\" height=\\\"24\\\" viewBox=\\\"0 0 24 24\\\" stroke-width=\\\"2\\\" stroke=\\\"currentColor\\\" fill=\\\"none\\\" stroke-linecap=\\\"round\\\" stroke-linejoin=\\\"round\\\"><path stroke=\\\"none\\\" d=\\\"M0 0h24v24H0z\\\" fill=\\\"none\\\" /><path d=\\\"M12 3l8 4.5l0 9l-8 4.5l-8 -4.5l0 -9l8 -4.5\\\" /><path d=\\\"M12 12l8 -4.5\\\" /><path d=\\\"M12 12l0 9\\\" /><path d=\\\"M12 12l-8 -4.5\\\" /><path d=\\\"M16 5.25l-8 4.5\\\" /></svg>\",\"IconType\":\"SVG\",\"Link\":\"/trang-chu\",\"Controller\":\"IndexController\",\"ParentCode\":\"NULL\",\"Level\":1,\"IsVisible\":1,\"OrdinalNumber\":8},{\"Id\":9,\"MenuCode\":9,\"MenuName\":\"Báo cáo\",\"Icon\":\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" class=\\\"icon\\\" width=\\\"24\\\" height=\\\"24\\\" viewBox=\\\"0 0 24 24\\\" stroke-width=\\\"2\\\" stroke=\\\"currentColor\\\" fill=\\\"none\\\" stroke-linecap=\\\"round\\\" stroke-linejoin=\\\"round\\\"><path stroke=\\\"none\\\" d=\\\"M0 0h24v24H0z\\\" fill=\\\"none\\\" /><path d=\\\"M12 3l8 4.5l0 9l-8 4.5l-8 -4.5l0 -9l8 -4.5\\\" /><path d=\\\"M12 12l8 -4.5\\\" /><path d=\\\"M12 12l0 9\\\" /><path d=\\\"M12 12l-8 -4.5\\\" /><path d=\\\"M16 5.25l-8 4.5\\\" /></svg>\",\"IconType\":\"SVG\",\"Link\":\"/trang-chu\",\"Controller\":\"IndexController\",\"ParentCode\":\"NULL\",\"Level\":1,\"IsVisible\":1,\"OrdinalNumber\":9},{\"Id\":10,\"MenuCode\":10,\"MenuName\":\"Hệ thống\",\"Icon\":\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" class=\\\"icon\\\" width=\\\"24\\\" height=\\\"24\\\" viewBox=\\\"0 0 24 24\\\" stroke-width=\\\"2\\\" stroke=\\\"currentColor\\\" fill=\\\"none\\\" stroke-linecap=\\\"round\\\" stroke-linejoin=\\\"round\\\"><path stroke=\\\"none\\\" d=\\\"M0 0h24v24H0z\\\" fill=\\\"none\\\" /><path d=\\\"M12 3l8 4.5l0 9l-8 4.5l-8 -4.5l0 -9l8 -4.5\\\" /><path d=\\\"M12 12l8 -4.5\\\" /><path d=\\\"M12 12l0 9\\\" /><path d=\\\"M12 12l-8 -4.5\\\" /><path d=\\\"M16 5.25l-8 4.5\\\" /></svg>\",\"IconType\":\"SVG\",\"Link\":\"/trang-chu\",\"Controller\":\"IndexController\",\"ParentCode\":\"NULL\",\"Level\":1,\"IsVisible\":1,\"OrdinalNumber\":10}]";
+        var lstMenus = JsonConvert.DeserializeObject<List<MenuModel>>(jMenu);
+        if (lstMenus != null && lstMenus.Any())
+        {
+            ListMenus = lstMenus;
+        }
+        base.OnInitialized();
+    }
+}
