@@ -2,15 +2,50 @@
 @rendermode InteractiveServer
 <PageTitle>Thiết lập thông tin - Quản lý nhân sự</PageTitle>
 
-<div class="h-breadcrumb d-flex justify-content-between align-items-center">
+<style>
+    .btn-custom {
+        background-color: #e1ecf4;
+        color: #39739d;
+        border-color: #7aa7c7;
+    }
+
+    .W1Button {
+        border-radius: 3px;
+        box-sizing: border-box;
+        border: 1px solid transparent;
+        cursor: pointer;
+        display: inline-block;
+        font-family: -apple-system, system-ui, "Segoe UI", "Liberation Sans", sans-serif;
+        font-size: 13px;
+        font-weight: 400;
+        line-height: 1.15385;
+        margin: 0;
+        outline: none;
+        padding: 7px 0.8em;
+        position: relative;
+        text-align: center;
+        text-decoration: none;
+        user-select: none;
+        -webkit-user-select: none;
+        touch-action: manipulation;
+        vertical-align: baseline;
+        white-space: nowrap;
+    }
+
+</style>
+
+<div class="h-breadcrumb d-flex justify-content-between align-items-center" style="padding:10px 10px">
     <div style="width: 100%;">
         <ol class="breadcrumb mx-2 py-1" aria-label="breadcrumbs">
             <li class="breadcrumb-item"><a href="#">Hệ thống</a></li>
             <li class="breadcrumb-item"><a href="#">Thiết lập thông tin lương</a></li>
         </ol>
     </div>
-    <div style="width: fit-content; cursor: pointer;">
-        <i class="fa-regular fa-star px-2"></i>
+    <div style="width: fit-content; cursor: pointer; padding-right:30px">
+        <button class="W1Button btn-custom" role="button">
+            <i class="fa fa-plus-circle"></i>
+            Thêm mới
+       </button>
     </div>
 </div>
 
@@ -18,8 +53,9 @@
     <div class="row row-gap-2 mt-2">
         <div class="col-12">
             <DxTabs>
-
+                
                 <DxTabPage Text="Đang áp dụng" Id="1">
+                    
                     <div class="d-flex pt-2 demo-employee-card">
                         <DxGrid ShowFilterRow=true
                                 AllowSort=true
@@ -83,6 +119,9 @@
     DateTime DateTimeValue { get; set; } = DateTime.Now;
     public List<SettingSalary> DataSource = null;
     public DxGrid Grid = null;
+
+
+   
 
     protected override void OnInitialized()
     {
