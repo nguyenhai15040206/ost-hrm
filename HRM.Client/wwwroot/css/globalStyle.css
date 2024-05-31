@@ -1,0 +1,10 @@
+﻿
+.dxbl-text-edit.dxbl-focused, .dxbl-text-edit:focus-within {
+    -webkit-box-shadow: unset;
+    box-shadow: unset;
+}
+
+.form-control:focus {
+    -webkit-box-shadow: unset;
+    box-shadow: unset;
+}
