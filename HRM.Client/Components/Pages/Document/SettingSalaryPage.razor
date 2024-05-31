@@ -1,0 +1,140 @@
+﻿@page "/SettingSalaryInfo"
+@rendermode InteractiveServer
+<PageTitle>Thiết lập thông tin - Quản lý nhân sự</PageTitle>
+
+<div class="h-breadcrumb d-flex justify-content-between align-items-center">
+    <div style="width: 100%;">
+        <ol class="breadcrumb mx-2 py-1" aria-label="breadcrumbs">
+            <li class="breadcrumb-item"><a href="#">Hệ thống</a></li>
+            <li class="breadcrumb-item"><a href="#">Thiết lập thông tin lương</a></li>
+        </ol>
+    </div>
+    <div style="width: fit-content; cursor: pointer;">
+        <i class="fa-regular fa-star px-2"></i>
+    </div>
+</div>
+
+<div class="h-content-filter">
+    <div class="row row-gap-2 mt-2">
+        <div class="col-12">
+            <DxTabs>
+
+                <DxTabPage Text="Đang áp dụng" Id="1">
+                    <div class="d-flex pt-2 demo-employee-card">
+                        <DxGrid ShowFilterRow=true
+                                AllowSort=true
+                                AllowSelectRowByClick=true
+                                PageSize=10
+                                PagerVisible=true
+                                PagerNavigationMode="PagerNavigationMode.InputBox"
+                                ColumnResizeMode="GridColumnResizeMode.ColumnsContainer"
+                                PageSizeSelectorVisible=true
+                                Data="@DataSource" KeyboardNavigationEnabled="true">
+                            <Columns>
+                                <DxGridDataColumn FieldName="Tenloailuong" Caption="Tên Loại Lương" />
+                                <DxGridDataColumn FieldName="AbsId" Caption="Abs ID" />
+                                <DxGridDataColumn FieldName="ID_ChiNhanh" Caption="ID Chi Nhánh" />
+                                <DxGridDataColumn FieldName="ID_LoaiLuong" Caption="ID Loại Lương" />
+                                <DxGridDataColumn FieldName="Active" Caption="Hoạt Động">
+                                    <CellDisplayTemplate>
+                                        <DxCheckBox Checked="@((context.DataItem as SettingSalary)?.Active)" Enabled="true" />
+                                    </CellDisplayTemplate>
+                                </DxGridDataColumn>
+                                <DxGridDataColumn FieldName="BHXH" Caption="BHXH">
+                                    <CellDisplayTemplate>
+                                        <DxCheckBox Checked="@((context.DataItem as SettingSalary)?.BHXH)" Enabled="true" />
+                                    </CellDisplayTemplate>
+                                </DxGridDataColumn>
+                                <DxGridDataColumn FieldName="BHYT" Caption="BHYT">
+                                    <CellDisplayTemplate>
+                                        <DxCheckBox Checked="@((context.DataItem as SettingSalary)?.BHYT)" Enabled="true" />
+                                    </CellDisplayTemplate>
+                                </DxGridDataColumn>
+                                <DxGridDataColumn FieldName="BHTNLD" Caption="BHTNLD">
+                                    <CellDisplayTemplate>
+                                        <DxCheckBox Checked="@((context.DataItem as SettingSalary)?.BHTNLD)" Enabled="true" />
+                                    </CellDisplayTemplate>
+                                </DxGridDataColumn>
+                                <DxGridDataColumn FieldName="PhiCongDoan" Caption="Phí Công Đoàn">
+                                    <CellDisplayTemplate>
+                                        <DxCheckBox Checked="@((context.DataItem as SettingSalary)?.PhiCongDoan)" Enabled="true" />
+                                    </CellDisplayTemplate>
+                                </DxGridDataColumn>
+                                <DxGridDataColumn FieldName="InHopDong" Caption="In Hợp Đồng">
+                                    <CellDisplayTemplate>
+                                        <DxCheckBox Checked="@((context.DataItem as SettingSalary)?.InHopDong)" Enabled="true" />
+                                    </CellDisplayTemplate>
+                                </DxGridDataColumn>
+                                <DxGridDataColumn FieldName="TangCa" Caption="Tăng Ca">
+                                    <CellDisplayTemplate>
+                                        <DxCheckBox Checked="@((context.DataItem as SettingSalary)?.TangCa)" Enabled="true" />
+                                    </CellDisplayTemplate>
+                                </DxGridDataColumn>
+                            </Columns>
+                        </DxGrid>
+                    </div>
+                </DxTabPage>
+            </DxTabs>
+        </div>
+    </div>
+</div>
+
+@code {
+    DateTime DateTimeValue { get; set; } = DateTime.Now;
+    public List<SettingSalary> DataSource = null;
+    public DxGrid Grid = null;
+
+    protected override void OnInitialized()
+    {
+        SettingSalary slr = new SettingSalary();
+        DataSource = slr.InitData();
+    }
+
+    public class SettingSalary
+    {
+        public string Tenloailuong { get; set; }
+        public int AbsId { get; set; }
+        public int ID_ChiNhanh { get; set; }
+        public int ID_LoaiLuong { get; set; }
+        public bool Active { get; set; }
+        public bool BHXH { get; set; }
+        public bool BHYT { get; set; }
+        public bool BHTNLD { get; set; }
+        public bool PhiCongDoan { get; set; }
+        public bool InHopDong { get; set; }
+        public bool TangCa { get; set; }
+
+
+        public SettingSalary()
+        {
+
+        }
+
+        public List<SettingSalary> InitData()
+        {
+            SettingSalary Setting = new SettingSalary();
+            List<SettingSalary> list = new List<SettingSalary>();
+            for (int i = 0; i < 10; i++)
+            {
+                Setting = new SettingSalary()
+                    {
+                        AbsId = i,
+                        Tenloailuong = "luong" + i,
+                        ID_ChiNhanh = i,
+                        ID_LoaiLuong = i,
+                        Active = true,
+                        BHXH = true,
+                        BHYT = true,
+                        BHTNLD = true,
+                        PhiCongDoan = true,
+                        InHopDong = true,
+                        TangCa = true,
+                    };
+                list.Add(Setting);
+            }
+            return list;
+        }
+
+    }
+}
+
