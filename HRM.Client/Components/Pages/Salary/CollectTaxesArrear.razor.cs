@@ -1,28 +1,14 @@
 ﻿using HRM.Client.Models;
+using Microsoft.AspNetCore.Components.Forms;
 namespace HRM.Client.Components.Pages.Salary
 {
     public partial class CollectTaxesArrear
     {
-        public int ActiveTabIndex { get; set; } = 0;
         public bool PopupVisible { get; set; }
-        public string? SoPhieu { get; set; }
-        public string? TrangThai { get; set; } = "TaoMoi";
-        public DateTime NgayDangKi { get; set; } = DateTime.Now;
-        public string? PhongBan { get; set; } = "PTHC";
-        public string? LoaiDangKi { get; set; } = "TTCTQD";
-        public string? NguoiLap { get; set; } = "";
-        public string? NhanVien { get; set; } = "";
-        public string? LyDo { get; set; } = "";
 
         public DateTime TuNgay { get; set; } = DateTime.Now;
         public DateTime DenNgay { get; set; } = DateTime.Now.AddDays(3);
-
-
-        public List<ComboboxModel>? ListTrangThai { get; set; }
-        public List<ComboboxModel>? ListPhongBan { get; set; }
-        public List<ComboboxModel>? ListLoaiDangKi { get; set; }
-        public List<ComboboxModel>? ListUsers { get; set; }
-
+        public EditContext? _EditContext { get; set; }
         public CollectTaxesArrearModel SelectModel { get; set; } = new CollectTaxesArrearModel();
         public List<CollectTaxesArrearModel> ListGrids { get; set; } = new List<CollectTaxesArrearModel>();
 
@@ -55,10 +41,31 @@ namespace HRM.Client.Components.Pages.Salary
                 luongCoBan = 5000000,
                 daTruyThu = true
             });
+
+            _EditContext = new EditContext(SelectModel);
         }
         protected void ShowPopupHandler()
         {
             PopupVisible = true;
+        }
+
+        protected void OnSaveHandler()
+        {
+            try
+            {
+                var checkData = _EditContext!.Validate();
+                if (!checkData) return;
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        protected void RefreshHandler()
+        {
+            _EditContext = new EditContext(SelectModel);
+            StateHasChanged();
         }
         #endregion
     }

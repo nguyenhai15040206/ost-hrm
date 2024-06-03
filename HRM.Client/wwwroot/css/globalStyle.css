@@ -30,9 +30,15 @@ html::-webkit-scrollbar-thumb {
 
 
 .w1FontSize{
-    font-size: 13px;
+    font-size: 13px !important;
 }
 
-.dxbl-grid .dxbl-grid-table > tbody > tr > td, .dxbl-grid .dxbl-grid-table > tbody > tr > th, .dxbl-grid .dxbl-grid-table > tfoot > tr > td, .dxbl-grid .dxbl-grid-table > tfoot > tr > th, .dxbl-grid .dxbl-grid-table > thead > tr > td, .dxbl-grid .dxbl-grid-table > thead > tr > th{
-    font-size: 13px;
+.dxbl-grid .dxbl-grid-table > tbody > tr > td, 
+.dxbl-grid .dxbl-grid-table > tbody > tr > th, 
+.dxbl-grid .dxbl-grid-table > tfoot > tr > td, 
+.dxbl-grid .dxbl-grid-table > tfoot > tr > th, 
+.dxbl-grid .dxbl-grid-table > thead > tr > td, 
+.dxbl-grid .dxbl-grid-table > thead > tr > th,
+.dxbl-modal > .dxbl-modal-root > .dxbl-popup > .dxbl-modal-content {
+    font-size: 13px !important; 
 }

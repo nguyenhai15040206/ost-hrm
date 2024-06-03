@@ -15,6 +15,15 @@
 </div>
 
 <div class="h-content-filter">
+    <div class="card p-1">
+        <DxToolbar ItemRenderStyleMode="@ToolbarRenderStyleMode.Contained">
+            <Items>
+                <DxToolbarItem Text="Làm mới" BeginGroup="true" IconUrl="../assets/refresh.png" Alignment="@ToolbarItemAlignment.Right" Click="@RefreshHandler" />
+                <DxToolbarItem Text="Cập nhật" BeginGroup="true" IconUrl="../assets/add-new-icon.png" Alignment="@ToolbarItemAlignment.Right" Click="@OnSaveHandler" />
+                <DxToolbarItem Text="Hủy phiếu" BeginGroup="true" IconUrl="../assets/reject.png" Alignment="@ToolbarItemAlignment.Right" />
+            </Items>
+        </DxToolbar>
+    </div>
     <div class="card card-lg mt-1" style="padding: 5px">
         <div class="row row-gap-1">
             <div class="col-12">
@@ -30,276 +39,279 @@
                             <div style="border-bottom: 1px solid var(--tblr-border-color); margin-top: 2px"></div>
                             <div id="collapse-info" class="accordion-collapse collapse show" data-bs-parent="#accordion-info">
                                 <div class="accordion-body p-2">
-                                    <div class="row row-gap-2">
-                                        <div class="col-md-6 col-sm-12">
-                                            <div class="d-flex ">
-                                                <label for="SoPhieu" class="h-label" style="width: 130px">
-                                                    Nhân viên <span style="color: red;">&nbsp;*</span>
-                                                </label>
-                                                <div style="width: calc(100% - 130px)">
-                                                    <div class="vInputContentWrapper">
-                                                        <DxTextBox @bind-Text="@SelectModel.tenNhanVien" Enabled="true">
-                                                            <Buttons>
-                                                                <DxEditorButton IconCssClass="fas fa-search"
-                                                                                Tooltip="Send Email" Click="@ShowPopupHandler" />
-                                                            </Buttons>
-                                                        </DxTextBox>
-                                                    </div>
+                                    <EditForm EditContext="@_EditContext">
+                                        <DataAnnotationsValidator />
+                                        <div class="row row-gap-2">
+                                            <div class="col-md-6 col-sm-12">
+                                                <div class="d-flex ">
+                                                    <label for="SoPhieu" class="h-label" style="width: 130px">
+                                                        Nhân viên <span style="color: red;">&nbsp;*</span>
+                                                    </label>
+                                                    <div style="width: calc(100% - 130px)">
+                                                        <div class="vInputContentWrapper">
+                                                            <DxTextBox @bind-Text="@SelectModel.tenNhanVien" Enabled="true" ShowValidationIcon="true">
+                                                                <Buttons>
+                                                                    <DxEditorButton IconCssClass="fas fa-search"
+                                                                                    Tooltip="Send Email" Click="@ShowPopupHandler" />
+                                                                </Buttons>
+                                                            </DxTextBox>
+                                                        </div>
                                                     
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3 col-sm-12">
-                                            <div class="d-flex ">
-                                                <label for="SoPhieu" class="h-label" style="width: 130px">
-                                                    Id <span style="color: red;">&nbsp;*</span>
-                                                </label>
-                                                <div style="width: calc(100% - 130px)">
-                                                    <div class="vInputContentWrapper">
-                                                        <DxTextBox @bind-Text="@SelectModel.maNhanVien" Enabled="true"></DxTextBox>
                                                     </div>
-
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="col-md-3 col-sm-12">
-                                            <DxCheckBox @bind-Checked="@SelectModel.daTruyThu">Đã truy thu</DxCheckBox>
-                                        </div>
+                                            <div class="col-md-3 col-sm-12">
+                                                <div class="d-flex ">
+                                                    <label for="SoPhieu" class="h-label" style="width: 130px">
+                                                        Id <span style="color: red;">&nbsp;*</span>
+                                                    </label>
+                                                    <div style="width: calc(100% - 130px)">
+                                                        <div class="vInputContentWrapper">
+                                                            <DxTextBox @bind-Text="@SelectModel.maNhanVien" Enabled="true" ShowValidationIcon="true"></DxTextBox>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3 col-sm-12">
+                                                <DxCheckBox @bind-Checked="@SelectModel.daTruyThu">Đã truy thu</DxCheckBox>
+                                            </div>
                                         
-                                    </div>
-                                    <div class="row row-gap-2 mt-2">
-                                        <div class="col-md-6 col-sm-12">
-                                            <div class="row row-gap-2">
-                                                <div class="col-md-6 col-sm-12">
-                                                    <div class="d-flex ">
-                                                        <label for="SoPhieu" class="h-label" style="width: 130px">
-                                                            Tháng trích nộp <span style="color: red;">&nbsp;*</span>
-                                                        </label>
-                                                        <div style="width: calc(100% - 130px)">
-                                                            <div class="vInputContentWrapper">
-                                                                <DxSpinEdit @bind-Value="@SelectModel.thangTrichNop" InputCssClass="text-end" />
-                                                            </div>
+                                        </div>
+                                        <div class="row row-gap-2 mt-2">
+                                            <div class="col-md-6 col-sm-12">
+                                                <div class="row row-gap-2">
+                                                    <div class="col-md-6 col-sm-12">
+                                                        <div class="d-flex ">
+                                                            <label for="SoPhieu" class="h-label" style="width: 130px">
+                                                                Tháng trích nộp <span style="color: red;">&nbsp;*</span>
+                                                            </label>
+                                                            <div style="width: calc(100% - 130px)">
+                                                                <div class="vInputContentWrapper">
+                                                                    <DxSpinEdit @bind-Value="@SelectModel.thangTrichNop" InputCssClass="text-end" ShowValidationIcon="true" />
+                                                                </div>
 
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6 col-sm-12">
+                                                        <div class="d-flex ">
+                                                            <label for="SoPhieu" class="h-label" style="width: 130px">
+                                                                Năm trích nộp <span style="color: red;">&nbsp;*</span>
+                                                            </label>
+                                                            <div style="width: calc(100% - 130px)">
+                                                                <div class="vInputContentWrapper">
+                                                                    <DxSpinEdit @bind-Value="@SelectModel.namTrichNop" InputCssClass="text-end" ShowValidationIcon="true" />
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6 col-sm-12">
+                                                        <div class="d-flex ">
+                                                            <label for="SoPhieu" class="h-label" style="width: 130px">
+                                                                Tháng truy thu <span style="color: red;">&nbsp;*</span>
+                                                            </label>
+                                                            <div style="width: calc(100% - 130px)">
+                                                                <div class="vInputContentWrapper">
+                                                                    <DxSpinEdit @bind-Value="@SelectModel.thangTruyThu" InputCssClass="text-end" ShowValidationIcon="true" />
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6 col-sm-12">
+                                                        <div class="d-flex ">
+                                                            <label for="SoPhieu" class="h-label" style="width: 130px">
+                                                                Năm truy thu <span style="color: red;">&nbsp;*</span>
+                                                            </label>
+                                                            <div style="width: calc(100% - 130px)">
+                                                                <div class="vInputContentWrapper">
+                                                                    <DxSpinEdit @bind-Value="@SelectModel.namTruyThu" InputCssClass="text-end" ShowValidationIcon="true" />
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6 col-sm-12">
+                                                        <div class="d-flex ">
+                                                            <label for="SoPhieu" class="h-label" style="width: 130px">
+                                                                Lương cơ bản <span style="color: red;">&nbsp;*</span>
+                                                            </label>
+                                                            <div style="width: calc(100% - 130px)">
+                                                                <div class="vInputContentWrapper">
+                                                                    <DxSpinEdit @bind-Value="@SelectModel.luongCoBan" InputCssClass="text-end" ShowValidationIcon="true" />
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6 col-sm-12">
+                                                        <div class="d-flex ">
+                                                            <label for="SoPhieu" class="h-label" style="width: 130px">
+                                                                Phụ cấp lương <span style="color: red;">&nbsp;*</span>
+                                                            </label>
+                                                            <div style="width: calc(100% - 130px)">
+                                                                <div class="vInputContentWrapper">
+                                                                    <DxSpinEdit @bind-Value="@SelectModel.phuCapLuong" InputCssClass="text-end" ShowValidationIcon="true" />
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6 col-sm-12">
+                                                        <div class="d-flex ">
+                                                            <label for="SoPhieu" class="h-label" style="width: 130px">
+                                                                Phụ cấp BHXH <span style="color: red;">&nbsp;*</span>
+                                                            </label>
+                                                            <div style="width: calc(100% - 130px)">
+                                                                <div class="vInputContentWrapper">
+                                                                    <DxSpinEdit @bind-Value="@SelectModel.phuCapBHXH" InputCssClass="text-end" ShowValidationIcon="true" />
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6 col-sm-12">
+                                                        <div class="d-flex ">
+                                                            <label for="SoPhieu" class="h-label" style="width: 130px">
+                                                                Lương BHXH <span style="color: red;">&nbsp;*</span>
+                                                            </label>
+                                                            <div style="width: calc(100% - 130px)">
+                                                                <div class="vInputContentWrapper">
+                                                                    <DxSpinEdit @bind-Value="@SelectModel.luongBHXH" InputCssClass="text-end" ShowValidationIcon="true" />
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6 col-sm-12">
+                                                        <div class="d-flex ">
+                                                            <label for="SoPhieu" class="h-label" style="width: 130px">
+                                                                Lương BHTN <span style="color: red;">&nbsp;*</span>
+                                                            </label>
+                                                            <div style="width: calc(100% - 130px)">
+                                                                <div class="vInputContentWrapper">
+                                                                    <DxSpinEdit @bind-Value="@SelectModel.luongBHTN" InputCssClass="text-end" ShowValidationIcon="true" />
+                                                                </div>
+
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-6 col-sm-12">
-                                                    <div class="d-flex ">
-                                                        <label for="SoPhieu" class="h-label" style="width: 130px">
-                                                            Năm trích nộp <span style="color: red;">&nbsp;*</span>
-                                                        </label>
-                                                        <div style="width: calc(100% - 130px)">
-                                                            <div class="vInputContentWrapper">
-                                                                <DxSpinEdit @bind-Value="@SelectModel.namTrichNop" InputCssClass="text-end" />
-                                                            </div>
+                                            </div>
 
+                                            <div class="col-md-6 col-sm-12">
+                                                <div class="row row-gap-2">
+                                                    <div class="col-md-6 col-sm-12">
+                                                        <div class="d-flex ">
+                                                            <label for="SoPhieu" class="h-label" style="width: 130px">
+                                                                BHXH CTY đóng
+                                                            </label>
+                                                            <div style="width: calc(100% - 130px)">
+                                                                <div class="vInputContentWrapper">
+                                                                    <DxSpinEdit @bind-Value="@SelectModel.bhxhCty" InputCssClass="text-end" />
+                                                                </div>
+
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="col-md-6 col-sm-12">
-                                                    <div class="d-flex ">
-                                                        <label for="SoPhieu" class="h-label" style="width: 130px">
-                                                            Tháng truy thu <span style="color: red;">&nbsp;*</span>
-                                                        </label>
-                                                        <div style="width: calc(100% - 130px)">
-                                                            <div class="vInputContentWrapper">
-                                                                <DxSpinEdit @bind-Value="@SelectModel.thangTruyThu" InputCssClass="text-end" />
-                                                            </div>
+                                                    <div class="col-md-6 col-sm-12">
+                                                        <div class="d-flex ">
+                                                            <label for="SoPhieu" class="h-label" style="width: 130px">
+                                                                BHXH NV đóng
+                                                            </label>
+                                                            <div style="width: calc(100% - 130px)">
+                                                                <div class="vInputContentWrapper">
+                                                                    <DxSpinEdit @bind-Value="@SelectModel.bhxhNV" InputCssClass="text-end" />
+                                                                </div>
 
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="col-md-6 col-sm-12">
-                                                    <div class="d-flex ">
-                                                        <label for="SoPhieu" class="h-label" style="width: 130px">
-                                                            Năm truy thu <span style="color: red;">&nbsp;*</span>
-                                                        </label>
-                                                        <div style="width: calc(100% - 130px)">
-                                                            <div class="vInputContentWrapper">
-                                                                <DxSpinEdit @bind-Value="@SelectModel.namTruyThu" InputCssClass="text-end" />
-                                                            </div>
+                                                    <div class="col-md-6 col-sm-12">
+                                                        <div class="d-flex ">
+                                                            <label for="SoPhieu" class="h-label" style="width: 130px">
+                                                                BHYT CTY đóng
+                                                            </label>
+                                                            <div style="width: calc(100% - 130px)">
+                                                                <div class="vInputContentWrapper">
+                                                                    <DxSpinEdit @bind-Value="@SelectModel.bhytCty" InputCssClass="text-end" />
+                                                                </div>
 
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="col-md-6 col-sm-12">
-                                                    <div class="d-flex ">
-                                                        <label for="SoPhieu" class="h-label" style="width: 130px">
-                                                            Lương cơ bản <span style="color: red;">&nbsp;*</span>
-                                                        </label>
-                                                        <div style="width: calc(100% - 130px)">
-                                                            <div class="vInputContentWrapper">
-                                                                <DxSpinEdit @bind-Value="@SelectModel.luongCoBan" InputCssClass="text-end" />
-                                                            </div>
+                                                    <div class="col-md-6 col-sm-12">
+                                                        <div class="d-flex ">
+                                                            <label for="SoPhieu" class="h-label" style="width: 130px">
+                                                                BHYT NV đóng
+                                                            </label>
+                                                            <div style="width: calc(100% - 130px)">
+                                                                <div class="vInputContentWrapper">
+                                                                    <DxSpinEdit @bind-Value="@SelectModel.bhytNV" InputCssClass="text-end" />
+                                                                </div>
 
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="col-md-6 col-sm-12">
-                                                    <div class="d-flex ">
-                                                        <label for="SoPhieu" class="h-label" style="width: 130px">
-                                                            Phụ cấp lương <span style="color: red;">&nbsp;*</span>
-                                                        </label>
-                                                        <div style="width: calc(100% - 130px)">
-                                                            <div class="vInputContentWrapper">
-                                                                <DxSpinEdit @bind-Value="@SelectModel.phuCapLuong" InputCssClass="text-end" />
-                                                            </div>
+                                                    <div class="col-md-6 col-sm-12">
+                                                        <div class="d-flex ">
+                                                            <label for="SoPhieu" class="h-label" style="width: 130px">
+                                                                BHTN CTY đóng
+                                                            </label>
+                                                            <div style="width: calc(100% - 130px)">
+                                                                <div class="vInputContentWrapper">
+                                                                    <DxSpinEdit @bind-Value="@SelectModel.bhtnCty" InputCssClass="text-end" />
+                                                                </div>
 
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="col-md-6 col-sm-12">
-                                                    <div class="d-flex ">
-                                                        <label for="SoPhieu" class="h-label" style="width: 130px">
-                                                            Phụ cấp BHXH <span style="color: red;">&nbsp;*</span>
-                                                        </label>
-                                                        <div style="width: calc(100% - 130px)">
-                                                            <div class="vInputContentWrapper">
-                                                                <DxSpinEdit @bind-Value="@SelectModel.phuCapBHXH" InputCssClass="text-end" />
-                                                            </div>
+                                                    <div class="col-md-6 col-sm-12">
+                                                        <div class="d-flex ">
+                                                            <label for="SoPhieu" class="h-label" style="width: 130px">
+                                                                BHTN NV đóng
+                                                            </label>
+                                                            <div style="width: calc(100% - 130px)">
+                                                                <div class="vInputContentWrapper">
+                                                                    <DxSpinEdit @bind-Value="@SelectModel.bhtnNV" InputCssClass="text-end" />
+                                                                </div>
 
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="col-md-6 col-sm-12">
-                                                    <div class="d-flex ">
-                                                        <label for="SoPhieu" class="h-label" style="width: 130px">
-                                                            Lương BHXH <span style="color: red;">&nbsp;*</span>
-                                                        </label>
-                                                        <div style="width: calc(100% - 130px)">
-                                                            <div class="vInputContentWrapper">
-                                                                <DxSpinEdit @bind-Value="@SelectModel.luongBHXH" InputCssClass="text-end" />
-                                                            </div>
+                                                    <div class="col-md-6 col-sm-12">
+                                                        <div class="d-flex ">
+                                                            <label for="SoPhieu" class="h-label" style="width: 130px">
+                                                                BHTN LĐ
+                                                            </label>
+                                                            <div style="width: calc(100% - 130px)">
+                                                                <div class="vInputContentWrapper">
+                                                                    <DxSpinEdit @bind-Value="@SelectModel.bhtnLD" InputCssClass="text-end" />
+                                                                </div>
 
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="col-md-6 col-sm-12">
-                                                    <div class="d-flex ">
-                                                        <label for="SoPhieu" class="h-label" style="width: 130px">
-                                                            Lương BHTN <span style="color: red;">&nbsp;*</span>
-                                                        </label>
-                                                        <div style="width: calc(100% - 130px)">
-                                                            <div class="vInputContentWrapper">
-                                                                <DxSpinEdit @bind-Value="@SelectModel.luongBHTN" InputCssClass="text-end" />
-                                                            </div>
+                                                    <div class="col-md-6 col-sm-12">
+                                                        <div class="d-flex ">
+                                                            <label for="SoPhieu" class="h-label" style="width: 130px">
+                                                                Ghi chú
+                                                            </label>
+                                                            <div style="width: calc(100% - 130px)">
+                                                                <div class="vInputContentWrapper">
+                                                                    <DxMemo @bind-Text="@SelectModel.ghiChu" BindValueMode="@BindValueMode.OnInput"
+                                                                            Rows="2" InputId="ghiChu" />
+                                                                </div>
 
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-
-                                        <div class="col-md-6 col-sm-12">
-                                            <div class="row row-gap-2">
-                                                <div class="col-md-6 col-sm-12">
-                                                    <div class="d-flex ">
-                                                        <label for="SoPhieu" class="h-label" style="width: 130px">
-                                                            BHXH CTY đóng
-                                                        </label>
-                                                        <div style="width: calc(100% - 130px)">
-                                                            <div class="vInputContentWrapper">
-                                                                <DxSpinEdit @bind-Value="@SelectModel.bhxhCty" InputCssClass="text-end" />
-                                                            </div>
-
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6 col-sm-12">
-                                                    <div class="d-flex ">
-                                                        <label for="SoPhieu" class="h-label" style="width: 130px">
-                                                            BHXH NV đóng
-                                                        </label>
-                                                        <div style="width: calc(100% - 130px)">
-                                                            <div class="vInputContentWrapper">
-                                                                <DxSpinEdit @bind-Value="@SelectModel.bhxhNV" InputCssClass="text-end" />
-                                                            </div>
-
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6 col-sm-12">
-                                                    <div class="d-flex ">
-                                                        <label for="SoPhieu" class="h-label" style="width: 130px">
-                                                            BHYT CTY đóng
-                                                        </label>
-                                                        <div style="width: calc(100% - 130px)">
-                                                            <div class="vInputContentWrapper">
-                                                                <DxSpinEdit @bind-Value="@SelectModel.bhytCty" InputCssClass="text-end" />
-                                                            </div>
-
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6 col-sm-12">
-                                                    <div class="d-flex ">
-                                                        <label for="SoPhieu" class="h-label" style="width: 130px">
-                                                            BHYT NV đóng
-                                                        </label>
-                                                        <div style="width: calc(100% - 130px)">
-                                                            <div class="vInputContentWrapper">
-                                                                <DxSpinEdit @bind-Value="@SelectModel.bhytNV" InputCssClass="text-end" />
-                                                            </div>
-
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6 col-sm-12">
-                                                    <div class="d-flex ">
-                                                        <label for="SoPhieu" class="h-label" style="width: 130px">
-                                                            BHTN CTY đóng
-                                                        </label>
-                                                        <div style="width: calc(100% - 130px)">
-                                                            <div class="vInputContentWrapper">
-                                                                <DxSpinEdit @bind-Value="@SelectModel.bhtnCty" InputCssClass="text-end" />
-                                                            </div>
-
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6 col-sm-12">
-                                                    <div class="d-flex ">
-                                                        <label for="SoPhieu" class="h-label" style="width: 130px">
-                                                            BHTN NV đóng
-                                                        </label>
-                                                        <div style="width: calc(100% - 130px)">
-                                                            <div class="vInputContentWrapper">
-                                                                <DxSpinEdit @bind-Value="@SelectModel.bhtnNV" InputCssClass="text-end" />
-                                                            </div>
-
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6 col-sm-12">
-                                                    <div class="d-flex ">
-                                                        <label for="SoPhieu" class="h-label" style="width: 130px">
-                                                            BHTN LĐ
-                                                        </label>
-                                                        <div style="width: calc(100% - 130px)">
-                                                            <div class="vInputContentWrapper">
-                                                                <DxSpinEdit @bind-Value="@SelectModel.bhtnLD" InputCssClass="text-end" />
-                                                            </div>
-
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6 col-sm-12">
-                                                    <div class="d-flex ">
-                                                        <label for="SoPhieu" class="h-label" style="width: 130px">
-                                                            Ghi chú
-                                                        </label>
-                                                        <div style="width: calc(100% - 130px)">
-                                                            <div class="vInputContentWrapper">
-                                                                <DxMemo @bind-Text="@SelectModel.ghiChu" BindValueMode="@BindValueMode.OnInput"
-                                                                        Rows="2" InputId="ghiChu" />
-                                                            </div>
-
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    </EditForm>
                                 </div>
                             </div>
                         </div>
@@ -309,7 +321,8 @@
         </div>
     
     </div>
-    
+   
+
     <div class="card card-lg mt-2" style="padding: 5px">
         <div class="row row-gap-2">
             <div class="col-12">
@@ -322,7 +335,7 @@
                             </button>
                         </span>
                         <div style="border-bottom: 1px solid var(--tblr-border-color); margin-top: 2px"></div>
-                        <div id="collapse-info" class="accordion-collapse collapse show" data-bs-parent="#accordion-info">
+                        <div id="collapse-info-detail" class="accordion-collapse collapse show" data-bs-parent="#accordion-info-detail">
                             <div class="accordion-body p-2">
                                 <div class="row row-gap-2">
                                     <div class="col-lg-5 col-md-6 col-sm-12">
@@ -387,4 +400,24 @@
         </div>
     </div>
 </div>
+
+<W1Popup @bind-IsOpenModal="@PopupVisible" Width="50%" HeaderText="Danh sách chọn">
+    <DxGrid Data="ListGrids"
+            ShowFilterRow="true"
+            ColumnResizeMode="GridColumnResizeMode.NextColumn"
+            PagerPosition="GridPagerPosition.Bottom"
+            PageSizeSelectorVisible="true"
+            PageSizeSelectorItems="@(new int[] { 10, 20, 100 })"
+            PageSizeSelectorAllRowsItemVisible="true"
+            PagerSwitchToInputBoxButtonCount="10"
+            PagerVisibleNumericButtonCount="10"
+            CssClass="grid-height"
+            FocusedRowEnabled="true">
+        <Columns>
+            <DxGridDataColumn FieldName="@nameof(CollectTaxesArrearModel.maNhanVien)" Caption="Mã NV" MinWidth="110" />
+            <DxGridDataColumn FieldName="@nameof(CollectTaxesArrearModel.tenNhanVien)" Caption="Tên nhân viên" MinWidth="140" />
+            <DxGridDataColumn FieldName="@nameof(CollectTaxesArrearModel.phongBan)" Caption="Phòng ban" MinWidth="110" />
+        </Columns>
+    </DxGrid>
+</W1Popup>
 
