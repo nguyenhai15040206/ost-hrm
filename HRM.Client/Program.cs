@@ -20,9 +20,8 @@ if (!app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
+app.UseStaticFiles();
 app.UseStaticFiles("/hrm");
-app.UseStaticFiles("/a");
 app.UseAntiforgery();
 
 app.MapRazorComponents<App>()

@@ -25,7 +25,7 @@
                             <span class="accordion-header" id="heading-1">
                                 <button class="accordion-button " style="padding-top: 1px; padding-bottom: 1px;padding-left: 5px;"
                                         type="button" data-bs-toggle="collapse" data-bs-target="#collapse-info" aria-expanded="true">
-                                    <h4 class="mb-0">Thông tin phiếu</h4>
+                                    <h4 class="mb-0 w1FontSize">Thông tin phiếu</h4>
                                 </button>
                             </span>
                             <div style="border-bottom: 1px solid var(--tblr-border-color); margin-top: 2px"></div>
@@ -181,9 +181,9 @@
                     @switch (ActiveTabIndex)
                     {
                         case 0:
-                            <div class="dxbl-grid-toolbar-container">
+                            @* <div class="dxbl-grid-toolbar-container">
                                 <DxButton>Thêm mới</DxButton>
-                            </div>
+                            </div> *@
                             <DxGrid Data="ListUsers"
                                     ShowFilterRow="true"
                                     ColumnResizeMode="GridColumnResizeMode.NextColumn"
