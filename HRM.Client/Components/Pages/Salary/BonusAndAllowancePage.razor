@@ -1,0 +1,360 @@
+﻿@page "/khen-thuong-phu-cap"
+@rendermode InteractiveServer
+
+<div class="h-breadcrumb d-flex justify-content-between align-items-center">
+    <div style="width: 100%;">
+        <ol class="breadcrumb mx-2 py-1" aria-label="breadcrumbs">
+            <li class="breadcrumb-item"><a href="#">Tính lương</a></li>
+            <li class="breadcrumb-item"><a href="#">Chứng từ - Quyết định</a></li>
+            <li class="breadcrumb-item active" aria-current="page"><a href="#">Khen thưởng - Phụ cấp</a></li>
+        </ol>
+    </div>
+    <div style="width: fit-content; cursor: pointer;">
+        <i class="fa-regular fa-star px-2"></i>
+    </div>
+</div>
+
+<div class="h-content-filter">
+    <div class="row row-gap-2">
+        <div class="col-md-4 col-sm-12">
+            <div class="card h-full">
+                <div class="card-header py-1 px-2 w1FontSize ">
+                    <i class="fas fa-search"></i><span style="margin-left: 5px">Thông tin tìm kiếm</span>
+                </div>
+                <div class="card-body p-1">
+                    <div>
+                        <div class="row row-gap-2">
+                            <div class="col-12">
+                                <div class="d-flex ">
+                                    <label for="SoPhieu" class="h-label" style="width: 130px">
+                                        Từ tháng <span style="color: red;">&nbsp;*</span>
+                                    </label>
+                                    <div style="width: calc(100% - 130px)">
+                                        <DxDateEdit @bind-Date="@TuNgay" DisplayFormat="MM/yyyy" Mask="MM/yyyy" Format="MM/yyyy" />
+                                    </div>
+                                </div>
+                                
+                            </div>
+                            <div class="col-12">
+                                <div class="d-flex ">
+                                    <label for="SoPhieu" class="h-label" style="width: 130px">
+                                        Đến tháng <span style="color: red;">&nbsp;*</span>
+                                    </label>
+                                    <div style="width: calc(100% - 130px)">
+                                        <DxDateEdit @bind-Date="@TuNgay" DisplayFormat="MM/yyyy" Mask="MM/yyyy" Format="MM/yyyy" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-2"></div>
+                    <DxGrid Data="ListUsers"
+                            ShowFilterRow="true"
+                            ColumnResizeMode="GridColumnResizeMode.NextColumn"
+                            PagerPosition="GridPagerPosition.Bottom"
+                            PageSizeSelectorVisible="true"
+                            PageSizeSelectorItems="@(new int[] { 10, 20, 100 })"
+                            PageSizeSelectorAllRowsItemVisible="true"
+                            PagerSwitchToInputBoxButtonCount="10"
+                            PagerVisibleNumericButtonCount="10"
+                            CssClass="grid-height"
+                            FocusedRowEnabled="true">
+                        <Columns>
+                            <DxGridDataColumn FieldName="EmployeeId" Caption="Số quyết định" DisplayFormat="d" MinWidth="140" />
+                            <DxGridDataColumn FieldName="EmployeeId" Caption="Đợt khen thưởng" DisplayFormat="d" MinWidth="140" />
+                        </Columns>
+                    </DxGrid>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-8 col-sm-12">
+            <div class="card card-lg" style="padding: 5px">
+                <div class="row row-gap-1">
+                    <div class="col-12">
+                        <div>
+                            <div class="accordion" id="accordion-info">
+                                <div class="accordion-item" style="border: none">
+                                    <span class="accordion-header" id="heading-1">
+                                        <button class="accordion-button " style="padding-top: 1px; padding-bottom: 1px;padding-left: 5px;"
+                                                type="button" data-bs-toggle="collapse" data-bs-target="#collapse-info" aria-expanded="true">
+                                            <h4 class="mb-0 w1FontSize">Chi tiết phiếu</h4>
+                                        </button>
+                                    </span>
+                                    <div style="border-bottom: 1px solid var(--tblr-border-color); margin-top: 2px"></div>
+                                    <div id="collapse-info" class="accordion-collapse collapse show" data-bs-parent="#accordion-info">
+                                        <div class="accordion-body p-2">
+                                            <EditForm EditContext="@_EditContext">
+                                                <DataAnnotationsValidator />
+                                                <div class="row row-gap-2">
+                                                    <div class="col-md-6 col-sm-12">
+                                                        <div class="d-flex ">
+                                                            <label for="SoPhieu" class="h-label" style="width: 150px">
+                                                                Loại thưởng - Phụ cấp <span style="color: red;">&nbsp;*</span>
+                                                            </label>
+                                                            <div style="width: calc(100% - 150px)">
+                                                                <DxComboBox Data="@ListLoaiThuong"
+                                                                            @bind-Value="@SelectModel.loaiThuong"
+                                                                            FilteringMode="DataGridFilteringMode.Contains"
+                                                                            TextFieldName="@nameof(ComboboxModel.name)"
+                                                                            ValueFieldName="@nameof(ComboboxModel.code)">
+                                                                </DxComboBox>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6 col-sm-12">
+                                                        <div class="d-flex ">
+                                                            <label for="SoPhieu" class="h-label" style="width: 150px">
+                                                                Số phiếu <span style="color: red;">&nbsp;*</span>
+                                                            </label>
+                                                            <div style="width: calc(100% - 150px)">
+                                                                <DxTextBox @bind-Text="@SelectModel.soPhieu" Enabled="true" ShowValidationIcon="true"></DxTextBox>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6 col-sm-12">
+                                                        <div class="d-flex ">
+                                                            <label for="SoPhieu" class="h-label" style="width: 150px">
+                                                                Ngày lập <span style="color: red;">&nbsp;*</span>
+                                                            </label>
+                                                            <div style="width: calc(100% - 150px)">
+                                                                <DxDateEdit @bind-Date="@SelectModel.ngayLap" DisplayFormat="dd/MM/yyyy" Mask="dd/MM/yyyy" Format="dd/MM/yyyy" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6 col-sm-12">
+                                                        <div class="d-flex ">
+                                                            <label for="SoPhieu" class="h-label" style="width: 150px">
+                                                                Tên đợt thưởng <span style="color: red;">&nbsp;*</span>
+                                                            </label>
+                                                            <div style="width: calc(100% - 150px)">
+                                                                <DxTextBox @bind-Text="@SelectModel.tenNhanVien" ShowValidationIcon="true"></DxTextBox>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6 col-sm-12">
+                                                        <div class="d-flex ">
+                                                            <label for="SoPhieu" class="h-label" style="width: 150px">
+                                                                Tình trạng <span style="color: red;">&nbsp;*</span>
+                                                            </label>
+                                                            <div style="width: calc(100% - 150px)">
+                                                                <DxComboBox Data="@ListLoaiThuong"
+                                                                            @bind-Value="@SelectModel.tinhTrang"
+                                                                            FilteringMode="DataGridFilteringMode.Contains"
+                                                                            TextFieldName="@nameof(ComboboxModel.name)"
+                                                                            ValueFieldName="@nameof(ComboboxModel.code)">
+                                                                </DxComboBox>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6 col-sm-12">
+                                                        <div class="d-flex ">
+                                                            <label for="SoPhieu" class="h-label" style="width: 150px">
+                                                                Số quyết định <span style="color: red;">&nbsp;*</span>
+                                                            </label>
+                                                            <div style="width: calc(100% - 150px)">
+                                                                <DxTextBox @bind-Text="@SelectModel.soQuyetDinh" Enabled="true" ShowValidationIcon="true"></DxTextBox>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6 col-sm-12">
+                                                        <div class="d-flex ">
+                                                            <label for="SoPhieu" class="h-label" style="width: 150px">
+                                                                Ngày ký <span style="color: red;">&nbsp;*</span>
+                                                            </label>
+                                                            <div style="width: calc(100% - 150px)">
+                                                                <DxDateEdit @bind-Date="@SelectModel.ngayKi" DisplayFormat="dd/MM/yyyy" Mask="dd/MM/yyyy" Format="dd/MM/yyyy" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6 col-sm-12">
+                                                        <div class="d-flex ">
+                                                            <label for="SoPhieu" class="h-label" style="width: 150px">
+                                                                Người lập <span style="color: red;">&nbsp;*</span>
+                                                            </label>
+                                                            <div style="width: calc(100% - 150px)">
+                                                                <div class="vInputContentWrapper">
+                                                                    <DxTextBox @bind-Text="@SelectModel.nguoiLap" Enabled="true" ShowValidationIcon="true"></DxTextBox>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6 col-sm-12">
+                                                        <div class="d-flex ">
+                                                            <label for="SoPhieu" class="h-label" style="width: 150px">
+                                                                Người ký <span style="color: red;">&nbsp;*</span>
+                                                            </label>
+                                                            <div style="width: calc(100% - 150px)">
+                                                                <div class="vInputContentWrapper">
+                                                                    <DxTextBox @bind-Text="@SelectModel.nguoiKi" Enabled="true" ShowValidationIcon="true">
+                                                                        <Buttons>
+                                                                            <DxEditorButton IconCssClass="fas fa-search"
+                                                                                            Tooltip="Send Email" />
+                                                                        </Buttons>
+                                                                    </DxTextBox>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6 col-sm-12">
+                                                        <div class="d-flex ">
+                                                            <label for="SoPhieu" class="h-label" style="width: 150px">
+                                                                Tổng tiền thưởng <span style="color: red;">&nbsp;*</span>
+                                                            </label>
+                                                            <div style="width: calc(100% - 150px)">
+                                                                <DxSpinEdit @bind-Value="@SelectModel.tongTienThuong" InputCssClass="text-end" ShowValidationIcon="true" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6 col-sm-12">
+                                                        <div class="d-flex ">
+                                                            <label for="SoPhieu" class="h-label" style="width: 150px">
+                                                                Tháng thưởng <span style="color: red;">&nbsp;*</span>
+                                                            </label>
+                                                            <div style="width: calc(100% - 150px)">
+                                                                <DxDateEdit @bind-Date="@SelectModel.thangThuong" DisplayFormat="MM/yyyy" Mask="MM/yyyy" Format="MM/yyyy" />
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6 col-sm-12">
+                                                        <div class="d-flex ">
+                                                            <label for="SoPhieu" class="h-label" style="width: 150px">
+                                                                Tháng chi trả <span style="color: red;">&nbsp;*</span>
+                                                            </label>
+                                                            <div style="width: calc(100% - 150px)">
+                                                                <DxDateEdit @bind-Date="@SelectModel.thangChiTra" DisplayFormat="MM/yyyy" Mask="MM/yyyy" Format="MM/yyyy" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6 col-sm-12">
+                                                        <div class="d-flex ">
+                                                            <label for="SoPhieu" class="h-label" style="width: 150px">
+                                                                File quyết định <span style="color: red;">&nbsp;*</span>
+                                                            </label>
+                                                            <div style="width: calc(100% - 150px)">
+                                                                <div class="vInputContentWrapper">
+                                                                    <DxTextBox @bind-Text="@SelectModel.tenNhanVien" Enabled="true" ShowValidationIcon="true">
+                                                                        <Buttons>
+                                                                            <DxEditorButton IconCssClass="fas fa-search"
+                                                                                            Tooltip="Send Email" />
+                                                                        </Buttons>
+                                                                    </DxTextBox>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6 col-sm-12">
+                                                        <div class="d-flex ">
+                                                            <label for="SoPhieu" class="h-label" style="width: 150px">
+                                                                Thời điểm chi trả <span style="color: red;">&nbsp;*</span>
+                                                            </label>
+                                                            <div style="width: calc(100% - 150px)">
+                                                                <DxComboBox Data="@ListThoiDiemChiTra"
+                                                                            @bind-Value="@SelectModel.thoiDiemChiTra"
+                                                                            FilteringMode="DataGridFilteringMode.Contains"
+                                                                            TextFieldName="@nameof(ComboboxModel.name)"
+                                                                            ValueFieldName="@nameof(ComboboxModel.code)">
+                                                                </DxComboBox>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6 col-sm-12">
+                                                        <div class="d-flex ">
+                                                            <label for="SoPhieu" class="h-label" style="width: 150px">
+                                                                Nội dung <span style="color: red;">&nbsp;*</span>
+                                                            </label>
+                                                            <div style="width: calc(100% - 150px)">
+                                                                <DxMemo @bind-Text="@SelectModel.noiDung" BindValueMode="@BindValueMode.OnInput"
+                                                                        Rows="1" InputId="noiDung" />
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6 col-sm-12">
+                                                        <div class="d-flex ">
+                                                            <label for="SoPhieu" class="h-label" style="width: 150px">
+                                                                Tháng tính thuế <span style="color: red;">&nbsp;*</span>
+                                                            </label>
+                                                            <div style="width: calc(100% - 150px)">
+                                                                <DxDateEdit @bind-Date="@SelectModel.thangTinhThue" DisplayFormat="MM/yyyy" Mask="MM/yyyy" Format="MM/yyyy" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </EditForm>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row row-gap-2 mt-1">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header p-0 border-bottom-0">
+                            <DxTabs @bind-ActiveTabIndex="@ActiveTabIndex" Id="tabActive" CssClass="w-full">
+                                <DxTabPage Text="Danh sách nhân viên" Id="ds"></DxTabPage>
+                                <DxTabPage Text="Lịch sử" Id="ls"></DxTabPage>
+                            </DxTabs>
+                        </div>
+                        <div class="card-body p-1">
+                            @switch (ActiveTabIndex)
+                            {
+                                case 0:
+                                    <DxGrid Data="ListUsers"
+                                            ShowFilterRow="true"
+                                            ColumnResizeMode="GridColumnResizeMode.NextColumn"
+                                            PagerPosition="GridPagerPosition.Bottom"
+                                            PageSizeSelectorVisible="true"
+                                            PageSizeSelectorItems="@(new int[] { 10, 20, 100 })"
+                                            PageSizeSelectorAllRowsItemVisible="true"
+                                            PagerSwitchToInputBoxButtonCount="10"
+                                            PagerVisibleNumericButtonCount="10"
+                                            CssClass="grid-height"
+                                            FocusedRowEnabled="true">
+                                        <Columns>
+                                            <DxGridDataColumn FieldName="EmployeeId" Caption="Mã NV" DisplayFormat="d" MinWidth="110" />
+                                            <DxGridDataColumn FieldName="EmployeeId" Caption="Tên nhân viên" DisplayFormat="d" MinWidth="140" />
+                                            <DxGridDataColumn FieldName="EmployeeId" Caption="Từ giờ" DisplayFormat="d" MinWidth="110" />
+                                            <DxGridDataColumn FieldName="EmployeeId" Caption="Đến giờ" DisplayFormat="d" MinWidth="110" />
+                                            <DxGridDataColumn FieldName="FromDate" Caption="Nghỉ giữa ca BĐ" UnboundType="GridUnboundColumnType.DateTime" DisplayFormat="dd/MM/yyyy" MinWidth="140" />
+                                            <DxGridDataColumn FieldName="ToDate" Caption="Nghỉ giữa ca KT" UnboundType="GridUnboundColumnType.DateTime" DisplayFormat="dd/MM/yyyy" MinWidth="140" />
+                                            <DxGridDataColumn FieldName="EmployeeId" Caption="Số giờ" DisplayFormat="d" MinWidth="110" />
+                                            <DxGridDataColumn FieldName="EmployeeId" Caption="Giờ đăng kí" DisplayFormat="d" MinWidth="110" />
+                                            <DxGridDataColumn FieldName="EmployeeId" Caption="Nội dung" DisplayFormat="d" MinWidth="140" />
+                                            <DxGridDataColumn FieldName="EmployeeId" Caption="Ghi chú" DisplayFormat="d" MinWidth="110" />
+                                            <DxGridDataColumn FieldName="EmployeeId" Caption="Giờ vào" DisplayFormat="d" MinWidth="110" />
+                                            <DxGridDataColumn FieldName="EmployeeId" Caption="Giờ ra" DisplayFormat="d" MinWidth="110" />
+                                            <DxGridDataColumn FieldName="EmployeeId" Caption="Kip code" DisplayFormat="d" MinWidth="110" />
+                                            <DxGridDataColumn FieldName="FromDate" Caption="Thời gian BĐ ca" UnboundType="GridUnboundColumnType.DateTime" DisplayFormat="dd/MM/yyyy" MinWidth="150" />
+                                            <DxGridDataColumn FieldName="FromDate" Caption="Thời gian KT ca" UnboundType="GridUnboundColumnType.DateTime" DisplayFormat="dd/MM/yyyy" MinWidth="150" />
+                                            <DxGridDataColumn FieldName="FromDate" Caption="Thời gian nghỉ BĐ" UnboundType="GridUnboundColumnType.DateTime" DisplayFormat="dd/MM/yyyy" MinWidth="150" />
+                                            <DxGridDataColumn FieldName="FromDate" Caption="Thời gian nghỉ KT" UnboundType="GridUnboundColumnType.DateTime" DisplayFormat="dd/MM/yyyy" MinWidth="150" />
+                                        </Columns>
+                                    </DxGrid>
+                                    break;
+                                case 1:
+                                    <div>
+                                        Andrew received his MBA in 1987 and a Ph.D. in international marketing at the University of Dallas in 1994. He speaks French and Italian fluently and reads German.
+                                        He joined the company as a sales representative. Shortly thereafter, he was promoted to sales manager (in January 2005) and vice president of sales (in March 2006).
+                                        Andrew is a member of the Sales Management Round table, Seattle Chamber of Commerce, and Pacific Rim Importers Association.
+                                    </div>
+                                    break;
+                            }
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
