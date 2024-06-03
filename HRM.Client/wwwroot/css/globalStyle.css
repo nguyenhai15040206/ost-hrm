@@ -1,4 +1,23 @@
-﻿
+﻿html {
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    scroll-padding-top: 9rem;
+}
+
+html::-webkit-scrollbar {
+    width: 1rem;
+}
+
+html::-webkit-scrollbar-track {
+    background: rgba(17, 17, 17, 0.7);
+}
+
+html::-webkit-scrollbar-thumb {
+    background: #29d9d5;
+    border-radius: 5rem; 
+}
+
+
 .dxbl-text-edit.dxbl-focused, .dxbl-text-edit:focus-within {
     -webkit-box-shadow: unset;
     box-shadow: unset;

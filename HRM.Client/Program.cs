@@ -1,5 +1,7 @@
 using DevExpress.Blazor;
+using DevExpress.Pdf.Native.BouncyCastle.Asn1.X509;
 using HRM.Client.Components;
+using Microsoft.Extensions.FileProviders;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,7 +21,8 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.UseStaticFiles();
+app.UseStaticFiles("/hrm");
+app.UseStaticFiles("/a");
 app.UseAntiforgery();
 
 app.MapRazorComponents<App>()

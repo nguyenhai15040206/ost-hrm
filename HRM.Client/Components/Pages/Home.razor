@@ -167,54 +167,72 @@
             </div>
         </div>
     </div>
-    <DxButton CssClass="popup-button my-1 ms-2" RenderStyle="ButtonRenderStyle.Primary" Click="@ShowPopup" Text="Showpopup" />
     <div class="row row-gap-2 mt-2">
         <div class="col-12">
-            <DxTabs @bind-ActiveTabIndex="@ActiveTabIndex" Id="tabActive">
-                <DxTabPage Text="Danh sách nhân viên làm thêm" Id="ds">
-                    <DxGrid Data="ListUsers"
-                            ShowFilterRow="true"
-                            ColumnResizeMode="GridColumnResizeMode.NextColumn"
-                            PagerPosition="GridPagerPosition.Bottom"
-                            PageSizeSelectorVisible="true"
-                            PageSizeSelectorItems="@(new int[] { 10, 20, 100 })"
-                            PageSizeSelectorAllRowsItemVisible="true"
-                            PagerSwitchToInputBoxButtonCount="10"
-                            PagerVisibleNumericButtonCount="10"
-                            CssClass="grid-height"
-                            FocusedRowEnabled="true">
-                        <Columns>
-                            <DxGridDataColumn FieldName="EmployeeId" Caption="Mã NV" DisplayFormat="d" MinWidth="110" />
-                            <DxGridDataColumn FieldName="EmployeeId" Caption="Tên nhân viên" DisplayFormat="d" MinWidth="140" />
-                            <DxGridDataColumn FieldName="EmployeeId" Caption="Từ giờ" DisplayFormat="d" MinWidth="110" />
-                            <DxGridDataColumn FieldName="EmployeeId" Caption="Đến giờ" DisplayFormat="d" MinWidth="110" />
-                            <DxGridDataColumn FieldName="FromDate" Caption="Nghỉ giữa ca BĐ" UnboundType="GridUnboundColumnType.DateTime" DisplayFormat="dd/MM/yyyy" MinWidth="140" />
-                            <DxGridDataColumn FieldName="ToDate" Caption="Nghỉ giữa ca KT" UnboundType="GridUnboundColumnType.DateTime" DisplayFormat="dd/MM/yyyy" MinWidth="140" />
-                            <DxGridDataColumn FieldName="EmployeeId" Caption="Số giờ" DisplayFormat="d" MinWidth="110" />
-                            <DxGridDataColumn FieldName="EmployeeId" Caption="Giờ đăng kí" DisplayFormat="d" MinWidth="110" />
-                            <DxGridDataColumn FieldName="EmployeeId" Caption="Nội dung" DisplayFormat="d" MinWidth="140" />
-                            <DxGridDataColumn FieldName="EmployeeId" Caption="Ghi chú" DisplayFormat="d" MinWidth="110" />
-                            <DxGridDataColumn FieldName="EmployeeId" Caption="Giờ vào" DisplayFormat="d" MinWidth="110" />
-                            <DxGridDataColumn FieldName="EmployeeId" Caption="Giờ ra" DisplayFormat="d" MinWidth="110" />
-                            <DxGridDataColumn FieldName="EmployeeId" Caption="Kip code" DisplayFormat="d" MinWidth="110" />
-                            <DxGridDataColumn FieldName="FromDate" Caption="Thời gian BĐ ca" UnboundType="GridUnboundColumnType.DateTime" DisplayFormat="dd/MM/yyyy" MinWidth="150" />
-                            <DxGridDataColumn FieldName="FromDate" Caption="Thời gian KT ca" UnboundType="GridUnboundColumnType.DateTime" DisplayFormat="dd/MM/yyyy" MinWidth="150" />
-                            <DxGridDataColumn FieldName="FromDate" Caption="Thời gian nghỉ BĐ" UnboundType="GridUnboundColumnType.DateTime" DisplayFormat="dd/MM/yyyy" MinWidth="150" />
-                            <DxGridDataColumn FieldName="FromDate" Caption="Thời gian nghỉ KT" UnboundType="GridUnboundColumnType.DateTime" DisplayFormat="dd/MM/yyyy" MinWidth="150" />
-                        </Columns>
-                    </DxGrid>
-                </DxTabPage>
-                <DxTabPage Text="Lịch sử" Id="ls">
-                    Andrew received his MBA in 1987 and a Ph.D. in international marketing at the University of Dallas in 1994. He speaks French and Italian fluently and reads German.
-                    He joined the company as a sales representative. Shortly thereafter, he was promoted to sales manager (in January 2005) and vice president of sales (in March 2006).
-                    Andrew is a member of the Sales Management Round table, Seattle Chamber of Commerce, and Pacific Rim Importers Association.
-                </DxTabPage>
-                <DxTabPage Text="Đính kèm" Id="dk">
-                    Andrew received his MBA in 1987 and a Ph.D. in international marketing at the University of Dallas in 1994. He speaks French and Italian fluently and reads German.
-                    He joined the company as a sales representative. Shortly thereafter, he was promoted to sales manager (in January 2005) and vice president of sales (in March 2006).
-                    Andrew is a member of the Sales Management Round table, Seattle Chamber of Commerce, and Pacific Rim Importers Association.
-                </DxTabPage>
-            </DxTabs>
+            <div class="card">
+                <div class="card-header p-0 border-bottom-0">
+                    <DxTabs @bind-ActiveTabIndex="@ActiveTabIndex" Id="tabActive" CssClass="w-full">
+                        <DxTabPage Text="Danh sách nhân viên làm thêm" Id="ds"></DxTabPage>
+                        <DxTabPage Text="Lịch sử" Id="ls"></DxTabPage>
+                        <DxTabPage Text="Đính kèm" Id="ls"></DxTabPage>
+                    </DxTabs>
+                </div>
+                <div class="card-body p-1">
+                    @switch (ActiveTabIndex)
+                    {
+                        case 0:
+                            <div class="dxbl-grid-toolbar-container">
+                                <DxButton>Thêm mới</DxButton>
+                            </div>
+                            <DxGrid Data="ListUsers"
+                                    ShowFilterRow="true"
+                                    ColumnResizeMode="GridColumnResizeMode.NextColumn"
+                                    PagerPosition="GridPagerPosition.Bottom"
+                                    PageSizeSelectorVisible="true"
+                                    PageSizeSelectorItems="@(new int[] { 10, 20, 100 })"
+                                    PageSizeSelectorAllRowsItemVisible="true"
+                                    PagerSwitchToInputBoxButtonCount="10"
+                                    PagerVisibleNumericButtonCount="10"
+                                    CssClass="grid-height"
+                                    FocusedRowEnabled="true">
+                                <Columns>
+                                    <DxGridDataColumn FieldName="EmployeeId" Caption="Mã NV" DisplayFormat="d" MinWidth="110" />
+                                    <DxGridDataColumn FieldName="EmployeeId" Caption="Tên nhân viên" DisplayFormat="d" MinWidth="140" />
+                                    <DxGridDataColumn FieldName="EmployeeId" Caption="Từ giờ" DisplayFormat="d" MinWidth="110" />
+                                    <DxGridDataColumn FieldName="EmployeeId" Caption="Đến giờ" DisplayFormat="d" MinWidth="110" />
+                                    <DxGridDataColumn FieldName="FromDate" Caption="Nghỉ giữa ca BĐ" UnboundType="GridUnboundColumnType.DateTime" DisplayFormat="dd/MM/yyyy" MinWidth="140" />
+                                    <DxGridDataColumn FieldName="ToDate" Caption="Nghỉ giữa ca KT" UnboundType="GridUnboundColumnType.DateTime" DisplayFormat="dd/MM/yyyy" MinWidth="140" />
+                                    <DxGridDataColumn FieldName="EmployeeId" Caption="Số giờ" DisplayFormat="d" MinWidth="110" />
+                                    <DxGridDataColumn FieldName="EmployeeId" Caption="Giờ đăng kí" DisplayFormat="d" MinWidth="110" />
+                                    <DxGridDataColumn FieldName="EmployeeId" Caption="Nội dung" DisplayFormat="d" MinWidth="140" />
+                                    <DxGridDataColumn FieldName="EmployeeId" Caption="Ghi chú" DisplayFormat="d" MinWidth="110" />
+                                    <DxGridDataColumn FieldName="EmployeeId" Caption="Giờ vào" DisplayFormat="d" MinWidth="110" />
+                                    <DxGridDataColumn FieldName="EmployeeId" Caption="Giờ ra" DisplayFormat="d" MinWidth="110" />
+                                    <DxGridDataColumn FieldName="EmployeeId" Caption="Kip code" DisplayFormat="d" MinWidth="110" />
+                                    <DxGridDataColumn FieldName="FromDate" Caption="Thời gian BĐ ca" UnboundType="GridUnboundColumnType.DateTime" DisplayFormat="dd/MM/yyyy" MinWidth="150" />
+                                    <DxGridDataColumn FieldName="FromDate" Caption="Thời gian KT ca" UnboundType="GridUnboundColumnType.DateTime" DisplayFormat="dd/MM/yyyy" MinWidth="150" />
+                                    <DxGridDataColumn FieldName="FromDate" Caption="Thời gian nghỉ BĐ" UnboundType="GridUnboundColumnType.DateTime" DisplayFormat="dd/MM/yyyy" MinWidth="150" />
+                                    <DxGridDataColumn FieldName="FromDate" Caption="Thời gian nghỉ KT" UnboundType="GridUnboundColumnType.DateTime" DisplayFormat="dd/MM/yyyy" MinWidth="150" />
+                                </Columns>
+                            </DxGrid>
+                            break;
+                        case 1:
+                            <div>
+                                Andrew received his MBA in 1987 and a Ph.D. in international marketing at the University of Dallas in 1994. He speaks French and Italian fluently and reads German.
+                                He joined the company as a sales representative. Shortly thereafter, he was promoted to sales manager (in January 2005) and vice president of sales (in March 2006).
+                                Andrew is a member of the Sales Management Round table, Seattle Chamber of Commerce, and Pacific Rim Importers Association.
+                            </div>
+                            break;
+                        case 2:
+                            <div>
+                                Andrew received his MBA in 1987 and a Ph.D. in international marketing at the University of Dallas in 1994. He speaks French and Italian fluently and reads German.
+                                He joined the company as a sales representative. Shortly thereafter, he was promoted to sales manager (in January 2005) and vice president of sales (in March 2006).
+                                Andrew is a member of the Sales Management Round table, Seattle Chamber of Commerce, and Pacific Rim Importers Association.
+                            </div>
+                            break;
+                    }
+                </div>
+            </div>
         </div>
     </div>
 </div>
@@ -322,13 +340,5 @@
     protected void ShowPopup()
     {
         PopupVisible = true;
-    }
-}
-
-@code{
-    public class ComboboxModel
-    {
-        public string? code { get; set; }
-        public string? name { get; set; }
     }
 }
