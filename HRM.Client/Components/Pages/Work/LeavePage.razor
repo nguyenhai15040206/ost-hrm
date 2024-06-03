@@ -1,0 +1,98 @@
+﻿@page "/leave"
+@rendermode InteractiveServer
+<PageTitle>Xin phép nghỉ - Quản lý nhân sự</PageTitle>
+
+<style>
+
+        .filterGrid {
+            height: 100vh;
+            border: 1px solid #DCDCDC;
+            width: 20%;
+            border-radius: 20px;
+            -webkit-box-shadow: 1px 3px 5px 2px rgba(84, 115, 125, 0.5);
+            box-shadow: 1px 3px 5px 2px rgba(84, 115, 125, 0.5);
+        }
+
+        .filterGrid .filterGrid-Card-Header {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background-color: #800080;
+                color: white;
+                font-size: 12px;
+                font-weight: 500;
+                justify-content: center;
+                padding: 0px 10px;
+                border-radius: 10px;
+                padding: 10px 12px;
+         }
+
+        .filterGrid .filterGridData {
+            margin:10px 5px;
+        }
+</style>
+
+<div>
+    <div>
+        <div class="filterGrid">
+            <div class="filterGrid-Card-Header">
+                <i class="fa fa-search" aria-hidden="true" style="font-size: 18px; width: 10%; text-align: left;"></i>
+                <h4 style="width: 60%; text-align: left; margin:0px;">Tìm kiếm</h4>
+                <i style="width: 30%; text-align: right;" class="fa fa-times" aria-hidden="true"></i>
+            </div>
+
+            <div class="filterGridData">
+                <DxGrid Data="@Data"
+                        ColumnResizeMode="GridColumnResizeMode.ColumnsContainer"
+                        ShowFilterRow=true
+                        PagerVisible=true
+                        PageSize="100"
+                        Page
+                        PagerNavigationMode="PagerNavigationMode.InputBox"
+                        KeyboardNavigationEnabled="true">
+                    <Columns>
+                        <DxGridDataColumn FieldName="ContactName" MinWidth="100" />
+                        <DxGridDataColumn FieldName="ContactTitle" MinWidth="100" />
+                        <DxGridDataColumn FieldName="CompanyName" MinWidth="100" />
+                        <DxGridDataColumn FieldName="City" Width="10%" MinWidth="80" />
+                        <DxGridDataColumn FieldName="Country" Width="10%" MinWidth="80" />
+                        <DxGridDataColumn FieldName="Phone" Width="15%" MinWidth="80" />
+                    </Columns>
+                </DxGrid>
+            </div>
+
+        </div>
+    </div>
+    <div>
+        <div>
+        </div>
+
+        <div>
+        </div>
+
+        <div>
+        </div>
+
+    </div>
+
+</div>
+
+
+@code {
+    public List<ModelData> Data { get; set; }
+
+
+    #region model
+    public class ModelData
+    {
+        public int ID { get; set; }
+        public int CreateDate { get; set; }
+        public string? Staff { get; set; }
+        public string? Type { get; set; }
+        public string? Reason { get; set; }
+    }
+
+
+    #endregion
+
+}
