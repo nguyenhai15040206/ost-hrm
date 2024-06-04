@@ -737,7 +737,7 @@
     "MenuCode": "0006-0004-0003",
     "MenuName": "Khen thưởng - Phụ cấp",
     "IconType": "NULL",
-    "Link": "\/trang-chu",
+    "Link": "\/khen-thuong-phu-cap",
     "Controller": "IndexController",
     "ParentCode": "0006-0004",
     "Level": 3,
