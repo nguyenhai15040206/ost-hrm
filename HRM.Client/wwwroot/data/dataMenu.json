@@ -365,7 +365,7 @@
     "MenuCode": "0004-0002-0006",
     "MenuName": "Xin phép nghỉ",
     "IconType": "NULL",
-    "Link": "\/trang-chu",
+    "Link": "\/leave",
     "Controller": "IndexController",
     "ParentCode": "0004-0002",
     "Level": 3,
