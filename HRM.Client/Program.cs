@@ -1,6 +1,7 @@
 using DevExpress.Blazor;
 using DevExpress.Pdf.Native.BouncyCastle.Asn1.X509;
 using HRM.Client.Components;
+using HRM.Client.Services;
 using Microsoft.Extensions.FileProviders;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,6 +11,7 @@ builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 builder.Services.AddDevExpressBlazor(configure => configure.BootstrapVersion = BootstrapVersion.v5);
 builder.Services.AddHttpClient();
+builder.Services.AddTransient<IProgressService, ProgressService>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

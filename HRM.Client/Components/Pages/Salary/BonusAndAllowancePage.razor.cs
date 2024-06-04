@@ -1,10 +1,13 @@
 ﻿using HRM.Client.Models;
+using HRM.Client.Services;
+using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Forms;
 
 namespace HRM.Client.Components.Pages.Salary
 {
     public partial class BonusAndAllowancePage
     {
+        [Inject] public IProgressService? _progressService { get; init; }
         public List<ComboboxModel>? ListUsers { get; set; }
         public BonusAndAllowanceModel SelectModel { get; set; } = new BonusAndAllowanceModel();
         public List<CollectTaxesArrearModel> ListGrids { get; set; } = new List<CollectTaxesArrearModel>();
@@ -17,36 +20,52 @@ namespace HRM.Client.Components.Pages.Salary
         public List<ComboboxModel>? ListTinhTrang { get; set; }
         public List<ComboboxModel>? ListThoiDiemChiTra { get; set; }
 
-        protected override void OnInitialized()
+        protected override async Task OnInitializedAsync()
         {
-            base.OnInitialized();
-            ListGrids = new List<CollectTaxesArrearModel>();
-            ListGrids.Add(new CollectTaxesArrearModel()
-            {
-                maNhanVien = "NV001",
-                tenNhanVien = "Nguyễn Văn A",
-                phongBan = "Phòng ban IT",
-                thangTrichNop = 4,
-                namTrichNop = 2024,
-                thangTruyThu = 4,
-                namTruyThu = 2024,
-                luongCoBan = 5000000,
-                daTruyThu = true
-            });
-            ListGrids.Add(new CollectTaxesArrearModel()
-            {
-                maNhanVien = "NV002",
-                tenNhanVien = "Nguyễn Văn B",
-                phongBan = "Phòng ban IT",
-                thangTrichNop = 4,
-                namTrichNop = 2024,
-                thangTruyThu = 4,
-                namTruyThu = 2024,
-                luongCoBan = 5000000,
-                daTruyThu = true
-            });
-            createDataCombo();
             _EditContext = new EditContext(SelectModel);
+            try
+            {
+                await base.OnInitializedAsync();
+                await _progressService!.Start();
+                ListGrids = new List<CollectTaxesArrearModel>();
+                ListGrids.Add(new CollectTaxesArrearModel()
+                {
+                    maNhanVien = "NV001",
+                    tenNhanVien = "Nguyễn Văn A",
+                    phongBan = "Phòng ban IT",
+                    thangTrichNop = 4,
+                    namTrichNop = 2024,
+                    thangTruyThu = 4,
+                    namTruyThu = 2024,
+                    luongCoBan = 5000000,
+                    daTruyThu = true
+                });
+                ListGrids.Add(new CollectTaxesArrearModel()
+                {
+                    maNhanVien = "NV002",
+                    tenNhanVien = "Nguyễn Văn B",
+                    phongBan = "Phòng ban IT",
+                    thangTrichNop = 4,
+                    namTrichNop = 2024,
+                    thangTruyThu = 4,
+                    namTruyThu = 2024,
+                    luongCoBan = 5000000,
+                    daTruyThu = true
+                });
+                createDataCombo();
+            }
+            catch (Exception) { }
+        }
+
+        protected override async Task OnAfterRenderAsync(bool firstRender)
+        {
+            await base.OnAfterRenderAsync(firstRender);
+            if (firstRender)
+            {
+                await _progressService!.SetPercent(0.4);
+                await Task.Delay(500);
+                await _progressService!.Done();
+            }
         }
 
 

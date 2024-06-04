@@ -35,7 +35,7 @@
                                 </div>
                                 
                             </div>
-                            <div class="col-12">
+                            <div class="col-8">
                                 <div class="d-flex ">
                                     <label for="SoPhieu" class="h-label" style="width: 130px">
                                         Đến tháng <span style="color: red;">&nbsp;*</span>
@@ -44,6 +44,9 @@
                                         <DxDateEdit @bind-Date="@TuNgay" DisplayFormat="MM/yyyy" Mask="MM/yyyy" Format="MM/yyyy" />
                                     </div>
                                 </div>
+                            </div>
+                            <div class="col-4">
+                                <DxButton  IconCssClass="fas fa-search" IconPosition="@ButtonIconPosition.BeforeText" Text="Tìm kiếm" />
                             </div>
                         </div>
                     </div>
