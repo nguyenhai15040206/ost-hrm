@@ -1,14 +1,11 @@
 ﻿@page "/"
-@page "/de-nghi-lam-them"
 @rendermode InteractiveServer
-<PageTitle>Home</PageTitle>
+<PageTitle>Trang chủ</PageTitle>
 
 <div class="h-breadcrumb d-flex justify-content-between align-items-center">
     <div style="width: 100%;">
         <ol class="breadcrumb mx-2 py-1" aria-label="breadcrumbs">
-            <li class="breadcrumb-item"><a href="#">Công - Phép</a></li>
-            <li class="breadcrumb-item"><a href="#">Chứng từ đề nghị</a></li>
-            <li class="breadcrumb-item active" aria-current="page"><a href="#">Đề nghị làm thêm</a></li>
+            <li class="breadcrumb-item active" aria-current="page"><a href="#">Trang chủ - Lịch làm việc</a></li>
         </ol>
     </div>
     <div style="width: fit-content; cursor: pointer;">
@@ -20,323 +17,48 @@
     <div class="card card-lg mt-1" style="padding: 5px">
         <div class="row row-gap-1">
             <div class="col-12">
-                <div>
-                    <div class="accordion" id="accordion-info">
-                        <div class="accordion-item" style="border: none">
-                            <span class="accordion-header" id="heading-1">
-                                <button class="accordion-button " style="padding-top: 1px; padding-bottom: 1px;padding-left: 5px;"
-                                        type="button" data-bs-toggle="collapse" data-bs-target="#collapse-info" aria-expanded="true">
-                                    <h4 class="mb-0 w1FontSize">Thông tin phiếu</h4>
-                                </button>
-                            </span>
-                            <div style="border-bottom: 1px solid var(--tblr-border-color); margin-top: 2px"></div>
-                            <div id="collapse-info" class="accordion-collapse collapse show" data-bs-parent="#accordion-info">
-                                <div class="accordion-body p-2">
-                                    <div class="row row-gap-2">
-                                        <div class="col-md-6 col-sm-12">
-                                            <div class="d-flex ">
-                                                <label for="SoPhieu" class="h-label" style="width: 130px">
-                                                    Số phiếu
-                                                </label>
-                                                <div style="width: calc(100% - 130px)">
-                                                    <DxTextBox @bind-Text="@SoPhieu" Enabled="false" />
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 col-sm-12">
-                                            <div class="d-flex ">
-                                                <label for="SoPhieu" class="h-label" style="width: 130px">
-                                                    Trạng thái
-                                                </label>
-                                                <div style="width: calc(100% - 130px)">
-                                                    <DxComboBox Data="@ListTrangThai"
-                                                                @bind-Value="@TrangThai"
-                                                                Enabled="false"
-                                                                FilteringMode="DataGridFilteringMode.Contains"
-                                                                TextFieldName="@nameof(ComboboxModel.name)"
-                                                                ValueFieldName="@nameof(ComboboxModel.code)">
-                                                    </DxComboBox>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 col-sm-12">
-                                            <div class="d-flex ">
-                                                <label for="SoPhieu" class="h-label" style="width: 130px">
-                                                    Ngày đăng kí
-                                                </label>
-                                                <div style="width: calc(100% - 130px)">
-                                                    <DxDateEdit @bind-Date="@NgayDangKi"
-                                                                TimeSectionVisible="true"
-                                                                Enabled="false"
-                                                                DisplayFormat="dd/MM/yyyy HH:mm" />
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 col-sm-12">
-                                            <div class="d-flex ">
-                                                <label for="SoPhieu" class="h-label" style="width: 130px">
-                                                    Người lập
-                                                    <span style="color: red;">&nbsp;*</span>
-                                                </label>
-                                                <div style="width: calc(100% - 130px)">
-                                                    <DxTextBox @bind-Text="@NguoiLap" />
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 col-sm-12">
-                                            <div class="d-flex ">
-                                                <label for="SoPhieu" class="h-label" style="width: 130px">
-                                                    Phòng ban
-                                                    <span style="color: red;">&nbsp;*</span>
-                                                </label>
-                                                <div style="width: calc(100% - 130px)">
-                                                    <DxComboBox Data="@ListPhongBan"
-                                                                @bind-Value="@PhongBan"
-                                                                FilteringMode="DataGridFilteringMode.Contains"
-                                                                ClearButtonDisplayMode="DataEditorClearButtonDisplayMode.Auto"
-                                                                TextFieldName="@nameof(ComboboxModel.name)"
-                                                                ValueFieldName="@nameof(ComboboxModel.code)">
-                                                    </DxComboBox>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 col-sm-12">
-                                            <div class="d-flex ">
-                                                <label for="SoPhieu" class="h-label" style="width: 130px">
-                                                    Loại đăng kí
-                                                    <span style="color: red;">&nbsp;*</span>
-                                                </label>
-                                                <div style="width: calc(100% - 130px)">
-                                                    <DxComboBox Data="@ListLoaiDangKi"
-                                                                @bind-Value="@LoaiDangKi"
-                                                                FilteringMode="DataGridFilteringMode.Contains"
-                                                                ClearButtonDisplayMode="DataEditorClearButtonDisplayMode.Auto"
-                                                                TextFieldName="@nameof(ComboboxModel.name)"
-                                                                ValueFieldName="@nameof(ComboboxModel.code)">
-                                                    </DxComboBox>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 col-sm-12">
-                                            <div class="d-flex ">
-                                                <label for="SoPhieu" class="h-label" style="width: 130px">
-                                                    Từ ngày/Đến ngày
-                                                    <span style="color: red;">&nbsp;*</span>
-                                                </label>
-                                                <div style="width: calc(100% - 130px)">
-                                                    <div class="d-flex justify-content-between">
-                                                        <div style="width: 50%;">
-                                                            <DxDateEdit @bind-Date="@TuNgay" DisplayFormat="dd/MM/yyyy" Mask="dd/MM/yyyy" Format="dd/MM/yyyy" Id="dateTuNgay" />
-                                                        </div>
-                                                        <div style="width: 50%; margin-left: 2px;">
-                                                            <DxDateEdit @bind-Date="@DenNgay" DisplayFormat="dd/MM/yyyy" Mask="dd/MM/yyyy" Format="dd/MM/yyyy" Id="dateDenNgay" />
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 col-sm-12">
-                                            <div class="d-flex ">
-                                                <label for="SoPhieu" class="h-label" style="width: 130px">
-                                                    Nhân viên
-                                                    <span style="color: red;">&nbsp;*</span>
-                                                </label>
-                                                <div style="width: calc(100% - 130px)">
-                                                    <DxTextBox @bind-Text="@NhanVien" />
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 col-sm-12">
-                                            <div class="d-flex ">
-                                                <label for="SoPhieu" class="h-label" style="width: 130px">
-                                                    Lý do
-                                                    <span style="color: red;">&nbsp;*</span>
-                                                </label>
-                                                <div style="width: calc(100% - 130px)">
-                                                    <DxMemo @bind-Text="LyDo"BindValueMode="@BindValueMode.OnInput"
-                                                            Rows="2" InputId="memoInputBinding" />
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
+                <DxScheduler @bind-StartDate="@StartDate"
+                             DataStorage="@DataStorage"
+                             CssClass="w-100">
+                    <DxSchedulerMonthView MonthCount="1" ShowWorkDaysOnly="false" CellMinWidth="120">
+                        <VerticalResourceHeaderCellTemplate>
+                            <div class="" style="display: flex; flex-direction: row; align-items: center;">
+                                <div style="padding: 0.4725rem;">@context.Resource.Caption AC</div>
+                            </div>
+                        </VerticalResourceHeaderCellTemplate>
+                        @* <DateHeaderCellTemplate>
+                            <div style="display: flex;">
+                                <div class="dxbs-sc-date-hr-wrapper" style="width: 100%;">
+                                    <span class="dxbs-sc-date-hr-day">@context.Interval.Start.Day</span>
+                                    <span class="dxbs-sc-date-hr-week">@context.Interval.Start.ToString("ddd")</span>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row row-gap-2 mt-2">
-        <div class="col-12">
-            <div class="card">
-                <div class="card-header p-0 border-bottom-0">
-                    <DxTabs @bind-ActiveTabIndex="@ActiveTabIndex" Id="tabActive" CssClass="w-full">
-                        <DxTabPage Text="Danh sách nhân viên làm thêm" Id="ds"></DxTabPage>
-                        <DxTabPage Text="Lịch sử" Id="ls"></DxTabPage>
-                        <DxTabPage Text="Đính kèm" Id="ls"></DxTabPage>
-                    </DxTabs>
-                </div>
-                <div class="card-body p-1">
-                    @switch (ActiveTabIndex)
-                    {
-                        case 0:
-                            <DxGrid Data="ListUsers"
-                                    ShowFilterRow="true"
-                                    ColumnResizeMode="GridColumnResizeMode.NextColumn"
-                                    PagerPosition="GridPagerPosition.Bottom"
-                                    PageSizeSelectorVisible="true"
-                                    PageSizeSelectorItems="@(new int[] { 10, 20, 100 })"
-                                    PageSizeSelectorAllRowsItemVisible="true"
-                                    PagerSwitchToInputBoxButtonCount="10"
-                                    PagerVisibleNumericButtonCount="10"
-                                    CssClass="grid-height"
-                                    FocusedRowEnabled="true">
-                                <Columns>
-                                    <DxGridDataColumn FieldName="EmployeeId" Caption="Mã NV" DisplayFormat="d" MinWidth="110" />
-                                    <DxGridDataColumn FieldName="EmployeeId" Caption="Tên nhân viên" DisplayFormat="d" MinWidth="140" />
-                                    <DxGridDataColumn FieldName="EmployeeId" Caption="Từ giờ" DisplayFormat="d" MinWidth="110" />
-                                    <DxGridDataColumn FieldName="EmployeeId" Caption="Đến giờ" DisplayFormat="d" MinWidth="110" />
-                                    <DxGridDataColumn FieldName="FromDate" Caption="Nghỉ giữa ca BĐ" UnboundType="GridUnboundColumnType.DateTime" DisplayFormat="dd/MM/yyyy" MinWidth="140" />
-                                    <DxGridDataColumn FieldName="ToDate" Caption="Nghỉ giữa ca KT" UnboundType="GridUnboundColumnType.DateTime" DisplayFormat="dd/MM/yyyy" MinWidth="140" />
-                                    <DxGridDataColumn FieldName="EmployeeId" Caption="Số giờ" DisplayFormat="d" MinWidth="110" />
-                                    <DxGridDataColumn FieldName="EmployeeId" Caption="Giờ đăng kí" DisplayFormat="d" MinWidth="110" />
-                                    <DxGridDataColumn FieldName="EmployeeId" Caption="Nội dung" DisplayFormat="d" MinWidth="140" />
-                                    <DxGridDataColumn FieldName="EmployeeId" Caption="Ghi chú" DisplayFormat="d" MinWidth="110" />
-                                    <DxGridDataColumn FieldName="EmployeeId" Caption="Giờ vào" DisplayFormat="d" MinWidth="110" />
-                                    <DxGridDataColumn FieldName="EmployeeId" Caption="Giờ ra" DisplayFormat="d" MinWidth="110" />
-                                    <DxGridDataColumn FieldName="EmployeeId" Caption="Kip code" DisplayFormat="d" MinWidth="110" />
-                                    <DxGridDataColumn FieldName="FromDate" Caption="Thời gian BĐ ca" UnboundType="GridUnboundColumnType.DateTime" DisplayFormat="dd/MM/yyyy" MinWidth="150" />
-                                    <DxGridDataColumn FieldName="FromDate" Caption="Thời gian KT ca" UnboundType="GridUnboundColumnType.DateTime" DisplayFormat="dd/MM/yyyy" MinWidth="150" />
-                                    <DxGridDataColumn FieldName="FromDate" Caption="Thời gian nghỉ BĐ" UnboundType="GridUnboundColumnType.DateTime" DisplayFormat="dd/MM/yyyy" MinWidth="150" />
-                                    <DxGridDataColumn FieldName="FromDate" Caption="Thời gian nghỉ KT" UnboundType="GridUnboundColumnType.DateTime" DisplayFormat="dd/MM/yyyy" MinWidth="150" />
-                                </Columns>
-                            </DxGrid>
-                            break;
-                        case 1:
-                            <div>
-                                Andrew received his MBA in 1987 and a Ph.D. in international marketing at the University of Dallas in 1994. He speaks French and Italian fluently and reads German.
-                                He joined the company as a sales representative. Shortly thereafter, he was promoted to sales manager (in January 2005) and vice president of sales (in March 2006).
-                                Andrew is a member of the Sales Management Round table, Seattle Chamber of Commerce, and Pacific Rim Importers Association.
-                            </div>
-                            break;
-                        case 2:
-                            <div>
-                                Andrew received his MBA in 1987 and a Ph.D. in international marketing at the University of Dallas in 1994. He speaks French and Italian fluently and reads German.
-                                He joined the company as a sales representative. Shortly thereafter, he was promoted to sales manager (in January 2005) and vice president of sales (in March 2006).
-                                Andrew is a member of the Sales Management Round table, Seattle Chamber of Commerce, and Pacific Rim Importers Association.
-                            </div>
-                            break;
-                    }
-                </div>
+                        </DateHeaderCellTemplate> *@
+                    </DxSchedulerMonthView>
+                </DxScheduler>
             </div>
         </div>
     </div>
 </div>
 
-<W1Popup @bind-IsOpenModal="@PopupVisible" HeaderText="Danh sách chọn">
-    <DxGrid Data="ListUsers"
-            ShowFilterRow="true"
-            ColumnResizeMode="GridColumnResizeMode.NextColumn"
-            PagerPosition="GridPagerPosition.Bottom"
-            PageSizeSelectorVisible="true"
-            PageSizeSelectorItems="@(new int[] { 10, 20, 100 })"
-            PageSizeSelectorAllRowsItemVisible="true"
-            PagerSwitchToInputBoxButtonCount="10"
-            PagerVisibleNumericButtonCount="10"
-            CssClass="grid-height"
-            FocusedRowEnabled="true">
-        <Columns>
-            <DxGridDataColumn FieldName="EmployeeId" Caption="Mã NV" DisplayFormat="d" MinWidth="110" />
-            <DxGridDataColumn FieldName="EmployeeId" Caption="Tên nhân viên" DisplayFormat="d" MinWidth="140" />
-            <DxGridDataColumn FieldName="EmployeeId" Caption="Từ giờ" DisplayFormat="d" MinWidth="110" />
-            <DxGridDataColumn FieldName="EmployeeId" Caption="Đến giờ" DisplayFormat="d" MinWidth="110" />
-            <DxGridDataColumn FieldName="FromDate" Caption="Nghỉ giữa ca BĐ" UnboundType="GridUnboundColumnType.DateTime" DisplayFormat="dd/MM/yyyy" MinWidth="140" />
-            <DxGridDataColumn FieldName="ToDate" Caption="Nghỉ giữa ca KT" UnboundType="GridUnboundColumnType.DateTime" DisplayFormat="dd/MM/yyyy" MinWidth="140" />
-            <DxGridDataColumn FieldName="EmployeeId" Caption="Số giờ" DisplayFormat="d" MinWidth="110" />
-            <DxGridDataColumn FieldName="EmployeeId" Caption="Giờ đăng kí" DisplayFormat="d" MinWidth="110" />
-            <DxGridDataColumn FieldName="EmployeeId" Caption="Nội dung" DisplayFormat="d" MinWidth="140" />
-            <DxGridDataColumn FieldName="EmployeeId" Caption="Ghi chú" DisplayFormat="d" MinWidth="110" />
-            <DxGridDataColumn FieldName="EmployeeId" Caption="Giờ vào" DisplayFormat="d" MinWidth="110" />
-            <DxGridDataColumn FieldName="EmployeeId" Caption="Giờ ra" DisplayFormat="d" MinWidth="110" />
-            <DxGridDataColumn FieldName="EmployeeId" Caption="Kip code" DisplayFormat="d" MinWidth="110" />
-            <DxGridDataColumn FieldName="FromDate" Caption="Thời gian BĐ ca" UnboundType="GridUnboundColumnType.DateTime" DisplayFormat="dd/MM/yyyy" MinWidth="150" />
-            <DxGridDataColumn FieldName="FromDate" Caption="Thời gian KT ca" UnboundType="GridUnboundColumnType.DateTime" DisplayFormat="dd/MM/yyyy" MinWidth="150" />
-            <DxGridDataColumn FieldName="FromDate" Caption="Thời gian nghỉ BĐ" UnboundType="GridUnboundColumnType.DateTime" DisplayFormat="dd/MM/yyyy" MinWidth="150" />
-            <DxGridDataColumn FieldName="FromDate" Caption="Thời gian nghỉ KT" UnboundType="GridUnboundColumnType.DateTime" DisplayFormat="dd/MM/yyyy" MinWidth="150" />
-        </Columns>
-    </DxGrid>
-</W1Popup>
 @code{
-    public bool PopupVisible { get; set; }
-    public string? SoPhieu { get; set; }
-    public string? TrangThai { get; set; } = "TaoMoi";
-    public DateTime NgayDangKi { get; set; } = DateTime.Now;
-    public string? PhongBan { get; set; } = "PTHC";
-    public string? LoaiDangKi { get; set; } = "TTCTQD";
-    public string? NguoiLap { get; set; } = "";
-    public string? NhanVien { get; set; } = "";
-    public string? LyDo { get; set; } = "";
-
-    public DateTime TuNgay { get; set; } = DateTime.Now;
-    public DateTime DenNgay { get; set; } = DateTime.Now.AddDays(3);
-
-
-    public List<ComboboxModel>? ListTrangThai { get; set; }
-    public List<ComboboxModel>? ListPhongBan { get; set; }
-    public List<ComboboxModel>? ListLoaiDangKi { get; set; }
-    public List<ComboboxModel>? ListUsers { get; set; }
-
-    public int ActiveTabIndex { get; set; } = 0;
-    protected override void OnInitialized()
-    {
-        ListTrangThai = new List<ComboboxModel>()
-        { 
-            new ComboboxModel()
-            {
-                code = "TaoMoi",
-                name = "Tạo mới"
-            },
-            new ComboboxModel()
-            {
-                code = "HoanThanh",
-                name = "Hoàn thành"
-            }
-        };
-
-        ListPhongBan = new List<ComboboxModel>()
+    DateTime StartDate { get; set; } = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
+    DateTime EndDate { get; set; } = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
+    DxSchedulerDataStorage DataStorage = new DxSchedulerDataStorage()
         {
-            new ComboboxModel()
+            AppointmentsSource = null,
+            AppointmentMappings = new DxSchedulerAppointmentMappings()
             {
-                code = "PTHC",
-                name = "Phòng tổ chức hàng chính"
-            },
-            new ComboboxModel()
-            {
-                code = "PTCKT",
-                name = "Phòng tài chính kế toán"
+                Type = "AppointmentType",
+                Start = "StartDate",
+                End = "EndDate",
+                Subject = "Caption",
+                AllDay = "AllDay",
+                Location = "Location",
+                Description = "Description",
+                LabelId = "Label",
+                StatusId = "Status",
+                RecurrenceInfo = "Recurrence"
             }
         };
-
-        ListLoaiDangKi = new List<ComboboxModel>()
-        {
-            new ComboboxModel()
-            {
-                code = "TTCTQD",
-                name = "Tính tăng ca theo qui định"
-            },
-            new ComboboxModel()
-            {
-                code = "TGC1",
-                name = "Tính giờ công 1.0"
-            }
-        };
-        base.OnInitialized();
-    }
-
-    protected void ShowPopup()
-    {
-        PopupVisible = true;
-    }
 }

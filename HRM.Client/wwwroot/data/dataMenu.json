@@ -471,7 +471,7 @@
   {
     "Id": 45,
     "MenuCode": "0005-0002",
-    "MenuName": "Đanh giá công việc",
+    "MenuName": "Đánh giá công việc",
     "IconType": "NULL",
     "Link": "\/trang-chu",
     "Controller": "IndexController",
