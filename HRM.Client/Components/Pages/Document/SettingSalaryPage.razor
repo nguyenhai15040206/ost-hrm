@@ -41,22 +41,27 @@
             <li class="breadcrumb-item"><a href="#">Thiết lập thông tin lương</a></li>
         </ol>
     </div>
-    <div style="width: fit-content; cursor: pointer; padding-right:30px">
-        <button class="W1Button btn-custom" role="button">
-            <i class="fa fa-plus-circle"></i>
-            Thêm mới
-       </button>
-    </div>
 </div>
 
-<div class="h-content-filter">
+<div class="h-content-filter p-1">
     <div class="row row-gap-2 mt-2">
+        <div class="card p-1">
+            <DxToolbar ItemRenderStyleMode="@ToolbarRenderStyleMode.Contained">
+                <Items>
+                    <DxToolbarItem Text="Làm mới" BeginGroup="true" IconUrl="../assets/refresh.png" Alignment="@ToolbarItemAlignment.Right" />
+                    <DxToolbarItem Text="Sao chép" BeginGroup="true" IconUrl="../assets/add-new-icon.png" Alignment="@ToolbarItemAlignment.Right" />
+                    <DxToolbarItem Text="In phiếu" BeginGroup="true" IconUrl="../assets/reject.png" Alignment="@ToolbarItemAlignment.Right" />
+                    <DxToolbarItem Text="Đính kèm" BeginGroup="true" IconUrl="../assets/file.png" Alignment="@ToolbarItemAlignment.Right" />
+                </Items>
+            </DxToolbar>
+        </div>
         <div class="col-12">
             <DxTabs>
                 
-                <DxTabPage Text="Đang áp dụng" Id="1">
+                <DxTabPage Text="Đang áp dụng" Id="luongTable">
                     
                     <div class="d-flex pt-2 demo-employee-card">
+                       
                         <DxGrid ShowFilterRow=true
                                 AllowSort=true
                                 AllowSelectRowByClick=true
