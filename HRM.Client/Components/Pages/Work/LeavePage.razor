@@ -3,11 +3,14 @@
 <PageTitle>Xin phép nghỉ - Quản lý nhân sự</PageTitle>
 
 <style>
+    .disabled {
+        opacity:0.7;
+      }
 
         .filterGrid {
             height: 100vh;
             border: 1px solid #DCDCDC;
-            width: 20%;
+            width: 100%;
             border-radius: 20px;
             -webkit-box-shadow: 1px 3px 5px 2px rgba(84, 115, 125, 0.5);
             box-shadow: 1px 3px 5px 2px rgba(84, 115, 125, 0.5);
@@ -17,60 +20,600 @@
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                background-color: #800080;
+                background-color: #6F42C1;
                 color: white;
                 font-size: 12px;
                 font-weight: 500;
                 justify-content: center;
                 padding: 0px 10px;
-                border-radius: 10px;
+                border-radius: 15px;
                 padding: 10px 12px;
          }
 
         .filterGrid .filterGridData {
-            margin:10px 5px;
+            margin: 10px 10px;
         }
+
+    .H1DxGrid .dxbl-grid-table {
+        border: solid #EEEEEE;
+    }
 </style>
 
-<div>
-    <div>
-        <div class="filterGrid">
+<div class="h-breadcrumb d-flex justify-content-between align-items-center">
+    <div style="width: 100%;">
+        <ol class="breadcrumb mx-2 py-1" aria-label="breadcrumbs">
+            <li class="breadcrumb-item"><a href="#">Công - Phép</a></li>
+            <li class="breadcrumb-item"><a href="#">Chứng từ đề nghị</a></li>
+            <li class="breadcrumb-item active" aria-current="page"><a href="#">Đề nghị làm thêm</a></li>
+        </ol>
+    </div>
+    <div style="width: fit-content; cursor: pointer;">
+        <i class="fa-regular fa-star px-2"></i>
+    </div>
+</div>
+
+<div style="" class="row">
+    <div class="col-md-3">
+        <div class="filterGrid h-content-filter">
             <div class="filterGrid-Card-Header">
                 <i class="fa fa-search" aria-hidden="true" style="font-size: 18px; width: 10%; text-align: left;"></i>
                 <h4 style="width: 60%; text-align: left; margin:0px;">Tìm kiếm</h4>
                 <i style="width: 30%; text-align: right;" class="fa fa-times" aria-hidden="true"></i>
             </div>
-
+           
             <div class="filterGridData">
+
+                <div class="filterGridData-Search p-1 card">
+                    <div class="d-flex py-2">
+                       <div class="m-1">
+                           <label>Từ ngày</label>
+                            <DxDateEdit @bind-Date="@DenNgay"
+                                        TimeSectionVisible="true"
+                                        Enabled="true"
+                                        DisplayFormat="dd/MM/yyyy HH:mm" />
+                       </div>
+                        <div class="m-1">
+                            <label>Đến ngày</label>
+                            <DxDateEdit @bind-Date="@DenNgay"
+                                        TimeSectionVisible="true"
+                                        Enabled="true"
+                                        DisplayFormat="dd/MM/yyyy HH:mm" />
+                        </div>
+                    </div>
+                    <div class="d-flex py-2">
+                        <DxTextBox Enabled="true" placeholder="tìm kiếm..." style="flex:1">
+                            <Buttons>
+                                <DxEditorButton IconCssClass="fas fa-search"
+                                                Tooltip="Send Email"  />
+                            </Buttons>
+                        </DxTextBox>
+                    </div>
+                </div>
+
                 <DxGrid Data="@Data"
                         ColumnResizeMode="GridColumnResizeMode.ColumnsContainer"
                         ShowFilterRow=true
                         PagerVisible=true
                         PageSize="100"
-                        Page
                         PagerNavigationMode="PagerNavigationMode.InputBox"
+                        CssClass="H1DxGrid"
                         KeyboardNavigationEnabled="true">
                     <Columns>
-                        <DxGridDataColumn FieldName="ContactName" MinWidth="100" />
-                        <DxGridDataColumn FieldName="ContactTitle" MinWidth="100" />
-                        <DxGridDataColumn FieldName="CompanyName" MinWidth="100" />
-                        <DxGridDataColumn FieldName="City" Width="10%" MinWidth="80" />
-                        <DxGridDataColumn FieldName="Country" Width="10%" MinWidth="80" />
-                        <DxGridDataColumn FieldName="Phone" Width="15%" MinWidth="80" />
+                        <DxGridDataColumn FieldName="ID" MinWidth="100" />
+                        <DxGridDataColumn FieldName="Ngày lập" MinWidth="100" />
+                        <DxGridDataColumn FieldName="Nhân viên" MinWidth="100" />
+                        <DxGridDataColumn FieldName="Hình thức" Width="10%" MinWidth="80" />
+                        <DxGridDataColumn FieldName="Lý do" Width="10%" MinWidth="80" />
                     </Columns>
                 </DxGrid>
             </div>
 
         </div>
     </div>
-    <div>
-        <div>
-        </div>
+    <div class="col-md-9" style="height:100vh; overflow-y:scroll" >
+        <div class="h-content-filter">
+            <div class="card card-lg mt-1" style="padding: 5px">
+                <div class="row row-gap-1">
+                    <div class="col-12">
+                        <div>
+                            <div class="accordion" id="accordion-info">
+                                <div class="accordion-item" style="border: none">
+                                    <span class="accordion-header" id="heading-1">
+                                        <button class="accordion-button " style="padding-top: 1px; padding-bottom: 1px;padding-left: 5px;"
+                                                type="button" data-bs-toggle="collapse" data-bs-target="#collapse-info" aria-expanded="true">
+                                            <h4 class="mb-0 w1FontSize">Thông tin đề nghị</h4>
+                                        </button>
+                                    </span>
+                                    <div style="border-bottom: 1px solid var(--tblr-border-color); margin-top: 2px"></div>
+                                    <div id="collapse-info" class="accordion-collapse collapse show" data-bs-parent="#accordion-info">
+                                        <div class="accordion-body p-2">
 
-        <div>
-        </div>
+                                            <div class="row row-gap-2 mt-1">
+                                                <div class="col-md-6 col-sm-12">
+                                                    <div class="d-flex ">
+                                                        <label for="SoPhieu" class="h-label" style="width: 130px">
+                                                            Phòng ban
+                                                        </label>
+                                                        <div style="width: calc(100% - 130px)">
+                                                            <DxTextBox Enabled="false" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
 
-        <div>
+                                            <div class="row row-gap-2 mt-1">
+                                                <div class="col-md-6 col-sm-12">
+                                                    <div class="d-flex ">
+                                                        <label for="SoPhieu" class="h-label" style="width: 130px">
+                                                            Nhân viên <span class="text-danger">*</span>
+                                                        </label>
+                                                        <div style="width: calc(100% - 130px)">
+                                                            <DxTextBox Enabled="false"/>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                             
+
+                                            </div>
+
+                                            <div class="row row-gap-2 mt-1">
+                                                <div class="col-md-6 col-sm-12">
+                                                    <div class="d-flex ">
+                                                        <label for="SoPhieu" class="h-label" style="width: 130px">
+                                                            Trạng thái
+                                                            <span class="text-danger">*</span>
+                                                        </label>
+                                                        <div style="width: calc(100% - 130px)">
+                                                            <DxComboBox Data="@Data"
+                                                                        TextFieldName="@nameof(ModelData.ID)"
+                                                                        @bind-Value="@SelectedEmployee"
+                                                                        CssClass="cw-480"
+                                                                        InputId="cbOverview" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                            <div class="row row-gap-2 mt-1">
+                                                <div class="col-md-6 col-sm-12">
+                                                    <div class="d-flex ">
+                                                        <label for="SoPhieu" class="h-label" style="width: 130px">
+                                                            Ghi chú
+                                                        </label>
+                                                        <div style="width: calc(100% - 130px)">
+                                                            <DxMemo 
+                                                                    CssClass="cw-480"
+                                                                    Rows="5"
+                                                                    InputId="memoOverview" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card card-lg mt-1" style="padding: 5px">
+                <div class="row row-gap-1">
+                    <div class="col-12">
+                        <div>
+                            <div class="accordion" id="accordion-info">
+                                <div class="accordion-item" style="border: none">
+                                    <span class="accordion-header" id="heading-1">
+                                        <button class="accordion-button " style="padding-top: 1px; padding-bottom: 1px;padding-left: 5px;"
+                                                type="button" data-bs-toggle="collapse" data-bs-target="#collapse-info" aria-expanded="true">
+                                            <h4 class="mb-0 w1FontSize">Thông tin ngày nghỉ</h4>
+                                        </button>
+                                    </span>
+                                    <div style="border-bottom: 1px solid var(--tblr-border-color); margin-top: 2px"></div>
+                                    <div id="collapse-info" class="accordion-collapse collapse show" data-bs-parent="#accordion-info">
+                                        <div class="accordion-body p-2">
+
+                                            <div class="row row-gap-2 mt-1">
+
+                                               @*  <label>Từ ngày</label>
+                                                <DxDateEdit @bind-Date="@DenNgay"
+                                                            TimeSectionVisible="true"
+                                                            Enabled="true"
+                                                            DisplayFormat="dd/MM/yyyy HH:mm" /> *@
+                                                <div class="col-md-6 col-sm-12">
+                                                    <div class="d-flex ">
+                                                        <label for="SoPhieu" class="h-label" style="width: 130px">
+                                                            Từ ngày
+                                                            <span class="text-danger">*</span>
+                                                        </label>
+                                                        <div style="width: calc(100% - 130px)">
+                                                            <DxDateEdit @bind-Date="@DenNgay"
+                                                                        TimeSectionVisible="true"
+                                                                        Enabled="true"
+                                                                        DisplayFormat="dd/MM/yyyy HH:mm" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-6 col-sm-12">
+                                                    <div class="d-flex ">
+                                                        <label for="SoPhieu" class="h-label" style="width: 130px">
+                                                            Hình thức
+                                                            <span class="text-danger">*</span>
+                                                        </label>
+                                                        <div style="width: calc(100% - 130px)">
+                                                            <DxTextBox Enabled="false" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row row-gap-2 mt-1">
+
+                                               @*  <label>Từ ngày</label>
+                                                <DxDateEdit @bind-Date="@DenNgay"
+                                                            TimeSectionVisible="true"
+                                                            Enabled="true"
+                                                            DisplayFormat="dd/MM/yyyy HH:mm" /> *@
+                                                <div class="col-md-6 col-sm-12">
+                                                    <div class="d-flex ">
+                                                        <label for="SoPhieu" class="h-label" style="width: 130px">
+                                                            Đến ngày
+                                                            <span class="text-danger">*</span>
+                                                        </label>
+                                                        <div style="width: calc(100% - 130px)">
+                                                            <DxDateEdit @bind-Date="@DenNgay"
+                                                                        TimeSectionVisible="true"
+                                                                        Enabled="true"
+                                                                        DisplayFormat="dd/MM/yyyy HH:mm" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-6 col-sm-12">
+                                                    <div class="d-flex ">
+                                                        <label for="SoPhieu" class="h-label" style="width: 130px">
+                                                            Lý do
+                                                        </label>
+                                                        <div style="width: calc(100% - 130px)">
+                                                            <DxTextBox Enabled="false" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                             <div class="row row-gap-2 mt-1">
+
+                                               @*  <label>Từ ngày</label>
+                                                <DxDateEdit @bind-Date="@DenNgay"
+                                                            TimeSectionVisible="true"
+                                                            Enabled="true"
+                                                            DisplayFormat="dd/MM/yyyy HH:mm" /> *@
+                                                <div class="col-md-6 col-sm-12">
+                                                </div>
+
+                                                <div class="col-md-6 col-sm-12">
+                                                    <div class="d-flex ">
+                                                        <label for="SoPhieu" class="h-label" style="width: 130px">
+                                                            Người thay thế
+                                                        </label>
+                                                        <div style="width: calc(100% - 130px)">
+                                                            <DxTextBox Enabled="false" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                           
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                          
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+
+            <div class="card p-1">
+                <DxToolbar ItemRenderStyleMode="@ToolbarRenderStyleMode.Contained">
+                    <Items>
+                        <DxToolbarItem Text="Làm mới" BeginGroup="true" IconUrl="../assets/refresh.png" Alignment="@ToolbarItemAlignment.Right" />
+                        <DxToolbarItem Text="Sao chép" BeginGroup="true" IconUrl="../assets/add-new-icon.png" Alignment="@ToolbarItemAlignment.Right" />
+                        <DxToolbarItem Text="In phiếu" BeginGroup="true" IconUrl="../assets/reject.png" Alignment="@ToolbarItemAlignment.Right" />
+                        <DxToolbarItem Text="Đính kèm" BeginGroup="true" IconUrl="../assets/file.png" Alignment="@ToolbarItemAlignment.Right" />
+                    </Items>
+                </DxToolbar>
+            </div>
+
+            <div class="row row-gap-2 mt-2">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header p-0 border-bottom-0">
+                            <DxTabs  Id="tabActive" CssClass="w-full">
+                                <DxTabPage Text="Danh sách ngày nghỉ" Id="ds"></DxTabPage>
+                                <DxTabPage Text="Đính kèm file" Id="file" ></DxTabPage>
+                                <DxTabPage Text="Lịch sử" Id="history" ></DxTabPage>
+                            </DxTabs>
+                        </div>
+                        <div class="card-body p-1">
+                            @switch ("1")
+                            {
+                                case "1":
+                                    @* <div class="dxbl-grid-toolbar-container">
+                            <DxButton>Thêm mới</DxButton>
+                            </div> *@
+                                    <DxGrid 
+                                            ShowFilterRow="true"
+                                            ColumnResizeMode="GridColumnResizeMode.NextColumn"
+                                            PagerPosition="GridPagerPosition.Bottom"
+                                            PageSizeSelectorVisible="true"
+                                            PageSizeSelectorItems="@(new int[] { 10, 20, 100 })"
+                                            PageSizeSelectorAllRowsItemVisible="true"
+                                            PagerSwitchToInputBoxButtonCount="10"
+                                            PagerVisibleNumericButtonCount="10"
+                                            CssClass="grid-height"
+                                            FocusedRowEnabled="true">
+                                        <Columns>
+                                            <DxGridDataColumn FieldName="EmployeeId" Caption="Ngày nghỉ phép" DisplayFormat="d" MinWidth="110" />
+                                            <DxGridDataColumn FieldName="EmployeeId" Caption="Sáng" DisplayFormat="d" MinWidth="140" />
+                                            <DxGridDataColumn FieldName="EmployeeId" Caption="Chiều" DisplayFormat="d" MinWidth="110" />
+                                            <DxGridDataColumn FieldName="EmployeeId" Caption="Người thay thế" DisplayFormat="d" MinWidth="110" />
+                                            <DxGridDataColumn FieldName="FromDate" Caption="Lý do" UnboundType="GridUnboundColumnType.DateTime" DisplayFormat="dd/MM/yyyy" MinWidth="140" />
+                                            <DxGridDataColumn FieldName="ToDate" Caption="Ngày làm bù" UnboundType="GridUnboundColumnType.DateTime" DisplayFormat="dd/MM/yyyy" MinWidth="140" />
+                                        </Columns>
+                                    </DxGrid>
+                                    break;
+                                case "3":
+                                    <DxGridDataColumn FieldName="EmployeeId" Caption="Người tạo" DisplayFormat="d" MinWidth="110" />
+                                    <DxGridDataColumn FieldName="EmployeeId" Caption="Ngày tạo" DisplayFormat="d" MinWidth="140" />
+                                    <DxGridDataColumn FieldName="EmployeeId" Caption="Máy tính" DisplayFormat="d" MinWidth="110" />
+                                    <DxGridDataColumn FieldName="EmployeeId" Caption="Đường dẫn" DisplayFormat="d" MinWidth="110" />
+                                    <DxGridDataColumn FieldName="FromDate" Caption="Loại file" UnboundType="GridUnboundColumnType.DateTime" DisplayFormat="dd/MM/yyyy" MinWidth="140" />
+                                    break;
+                                case "4":
+                                    <div>
+                                        Andrew received his MBA in 1987 and a Ph.D. in international marketing at the University of Dallas in 1994. He speaks French and Italian fluently and reads German.
+                                        He joined the company as a sales representative. Shortly thereafter, he was promoted to sales manager (in January 2005) and vice president of sales (in March 2006).
+                                        Andrew is a member of the Sales Management Round table, Seattle Chamber of Commerce, and Pacific Rim Importers Association.
+                                    </div>
+                                    break;
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card card-lg mt-1 disabled" style="padding: 5px">
+                <div class="row row-gap-1">
+                    <div class="col-12">
+                        <div>
+                            <div class="accordion" id="accordion-info">
+                                <div class="accordion-item" style="border: none">
+                                    <span class="accordion-header" id="heading-1">
+                                        <button class="accordion-button " style="padding-top: 1px; padding-bottom: 1px;padding-left: 5px;"
+                                                type="button" data-bs-toggle="collapse" data-bs-target="#collapse-info" aria-expanded="true">
+                                            <h4 class="mb-0 w1FontSize">Thông tin phép năm</h4>
+                                        </button>
+                                    </span>
+                                    <div style="border-bottom: 1px solid var(--tblr-border-color); margin-top: 2px"></div>
+                                    <div id="collapse-info" class="accordion-collapse collapse show" data-bs-parent="#accordion-info">
+                                        <div class="accordion-body p-2">
+
+                                            <div class="row row-gap-2 mt-1">
+
+                                                @*  <label>Từ ngày</label>
+                                                <DxDateEdit @bind-Date="@DenNgay"
+                                                TimeSectionVisible="true"
+                                                Enabled="true"
+                                                DisplayFormat="dd/MM/yyyy HH:mm" /> *@
+                                                <div class="col-md-3 col-sm-12">
+                                                    <div class="d-flex ">
+                                                        <label for="phepnamcu" class="h-label" style="width: 130px">
+                                                            Phép năm cũ
+                                                        </label>
+                                                        <div style="width: calc(100% - 130px)">
+                                                            <DxSpinEdit @bind-Value="value"
+                                                                        Enabled=false
+                                                                        Mask="@NumericMask.RealNumber">
+                                                            </DxSpinEdit>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-3 col-sm-12">
+                                                    <div class="d-flex ">
+                                                        <label for="phepnamcu" class="h-label" style="width: 130px">
+                                                            Phép năm
+                                                        </label>
+                                                        <div style="width: calc(100% - 130px)">
+                                                            <DxSpinEdit @bind-Value="value"
+                                                                        Enabled=false
+                                                                        Mask="@NumericMask.RealNumber">
+                                                            </DxSpinEdit>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                 <div class="col-md-3 col-sm-12">
+                                                    <div class="d-flex ">
+                                                        <label for="phepnamcu" class="h-label" style="width: 130px">
+                                                            Tổng phép năm
+                                                        </label>
+                                                        <div style="width: calc(100% - 130px)">
+                                                            <DxSpinEdit @bind-Value="value"
+                                                                        Enabled=false
+                                                                        Mask="@NumericMask.RealNumber">
+                                                            </DxSpinEdit>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-3 col-sm-12">
+                                                    <div class="d-flex ">
+                                                        <label for="phepnamcu" class="h-label" style="width: 130px">
+                                                            Phép ứng chi nhánh
+                                                        </label>
+                                                        <div style="width: calc(100% - 130px)">
+                                                            <DxSpinEdit @bind-Value="value"
+                                                                        Enabled=false
+                                                                        Mask="@NumericMask.RealNumber">
+                                                            </DxSpinEdit>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row row-gap-2 mt-1">
+
+                                                @*  <label>Từ ngày</label>
+                                                <DxDateEdit @bind-Date="@DenNgay"
+                                                TimeSectionVisible="true"
+                                                Enabled="true"
+                                                DisplayFormat="dd/MM/yyyy HH:mm" /> *@
+                                                <div class="col-md-3 col-sm-12">
+                                                    <div class="d-flex ">
+                                                        <label for="phepnamcu" class="h-label" style="width: 130px">
+                                                            Phép năm cũ đã dùng
+                                                        </label>
+                                                        <div style="width: calc(100% - 130px)">
+                                                            <DxSpinEdit @bind-Value="value"
+                                                                        Enabled=false
+                                                                        Mask="@NumericMask.RealNumber">
+                                                            </DxSpinEdit>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-3 col-sm-12">
+                                                    <div class="d-flex ">
+                                                        <label for="phepnamcu" class="h-label" style="width: 130px">
+                                                            Phép được cộng
+                                                        </label>
+                                                        <div style="width: calc(100% - 130px)">
+                                                            <DxSpinEdit @bind-Value="value"
+                                                                        Enabled=false
+                                                                        Mask="@NumericMask.RealNumber">
+                                                            </DxSpinEdit>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-3 col-sm-12">
+                                                    <div class="d-flex ">
+                                                        <label for="phepnamcu" class="h-label" style="width: 130px">
+                                                            phép năm đã dùng
+                                                        </label>
+                                                        <div style="width: calc(100% - 130px)">
+                                                            <DxSpinEdit @bind-Value="value"
+                                                                        Enabled=false
+                                                                        Mask="@NumericMask.RealNumber">
+                                                            </DxSpinEdit>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-3 col-sm-12">
+                                                    <div class="d-flex ">
+                                                        <label for="phepnamcu" class="h-label" style="width: 130px">
+                                                            Phép ứng cá nhân
+                                                        </label>
+                                                        <div style="width: calc(100% - 130px)">
+                                                            <DxSpinEdit @bind-Value="value"
+                                                                        Mask="@NumericMask.RealNumber">
+                                                            </DxSpinEdit>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row row-gap-2 mt-1">
+
+                                                @*  <label>Từ ngày</label>
+                                                <DxDateEdit @bind-Date="@DenNgay"
+                                                TimeSectionVisible="true"
+                                                Enabled="true"
+                                                DisplayFormat="dd/MM/yyyy HH:mm" /> *@
+                                                <div class="col-md-3 col-sm-12">
+                                                    <div class="d-flex ">
+                                                        <label for="phepnamcu" class="h-label" style="width: 130px">
+                                                            Phép cũ còn lại
+                                                        </label>
+                                                        <div style="width: calc(100% - 130px)">
+                                                            <DxSpinEdit @bind-Value="value"
+                                                                        Enabled=false
+                                                                        Mask="@NumericMask.RealNumber">
+                                                            </DxSpinEdit>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-3 col-sm-12">
+                                                    <div class="d-flex ">
+                                                        <label for="phepnamcu" class="h-label" style="width: 130px">
+                                                            Phép điều chỉnh
+                                                            <span class="text-danger">*</span>
+                                                        </label>
+                                                        <div style="width: calc(100% - 130px)">
+                                                            <DxSpinEdit @bind-Value="value"
+                                                                        Enabled=false
+                                                                        Mask="@NumericMask.RealNumber">
+                                                            </DxSpinEdit>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-3 col-sm-12">
+                                                    <div class="d-flex ">
+                                                        <label for="phepnamcu" class="h-label" style="width: 130px">
+                                                            phép năm còn lại
+                                                            <span class="text-danger">*</span>
+                                                        </label>
+                                                        <div style="width: calc(100% - 130px)">
+                                                            <DxSpinEdit @bind-Value="value"
+                                                                        Enabled=false
+                                                                        Mask="@NumericMask.RealNumber">
+                                                            </DxSpinEdit>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div class="row row-gap-2 mt-1">
+
+                                                @*  <label>Từ ngày</label>
+                                                <DxDateEdit @bind-Date="@DenNgay"
+                                                TimeSectionVisible="true"
+                                                Enabled="true"
+                                                DisplayFormat="dd/MM/yyyy HH:mm" /> *@
+                                                <div class="col-md-6 col-sm-12">
+                                                    <div class="d-flex ">
+                                                        <label for="phepnamcu" class="h-label" style="width: 130px">
+                                                            Hạn sử dụng phép năm cũ
+                                                        </label>
+                                                        <div style="width: calc(100% - 130px)">
+                                                            <DxSpinEdit @bind-Value="value"
+                                                                        Enabled=false
+                                                                        Mask="@NumericMask.RealNumber">
+                                                            </DxSpinEdit>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
         </div>
 
     </div>
@@ -79,8 +622,15 @@
 
 
 @code {
+    public int TabActive { get; set; }
     public List<ModelData> Data { get; set; }
+    public bool IsTabFileAttach { get; set; } = true;
 
+    public string SelectedEmployee { get; set; }
+    public DateTime TuNgay = DateTime.Now;
+    public DateTime DenNgay = DateTime.Now;
+
+    public int value = 0;
 
     #region model
     public class ModelData
