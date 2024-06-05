@@ -7,6 +7,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Components\Pages\Salary\CollectTaxesArrear.razor.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="Components\Pages\Salary\CollectTaxesArrear.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="DevExpress.Blazor" Version="23.2.6" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
   </ItemGroup>

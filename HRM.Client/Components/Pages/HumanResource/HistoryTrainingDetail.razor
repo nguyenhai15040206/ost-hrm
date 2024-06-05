@@ -1,0 +1,42 @@
+﻿<DxGrid Data="afterTraining"
+        PageSize="5"
+        AutoExpandAllGroupRows="true" KeyboardNavigationEnabled="KeyboardNavigationEnabled">
+    <Columns>
+        <DxGridDataColumn FieldName="@nameof(AfterTraining.Scores)" Caption="Điểm"/>
+        <DxGridDataColumn FieldName="@nameof(AfterTraining.standard)" Caption="Tiêu chí" Width="40%" />
+        <DxGridDataColumn FieldName="@nameof(AfterTraining.Note)" Caption="Ghi chú" DisplayFormat="c" />
+    </Columns>
+</DxGrid>
+
+@code {
+
+    public class Training
+    {
+        public int Id { get; set; }
+        public string? TraningSession { get; set; } //Khóa đào tạo
+        public string? Rank { get; set; } //xếp loại
+        public string? Cost { get; set; } //chi phí
+        public string? Evaluate { get; set; } //đánh giá
+        public string? Note { get; set; } //ghi chú
+        public List<AfterTraining> AfterTraining { get; set; }
+    }
+
+    public class AfterTraining
+    {
+        public string Scores { get; set; } //điểm số
+        public string standard { get; set; } //tiêu chí
+        public string? Note { get; set; } //ghi chú
+        public int Id { get; set; }
+    }
+
+    [Parameter]
+    public bool KeyboardNavigationEnabled { get; set; }
+    [Parameter]
+    public AfterTraining afterTraining { get; set; }
+    object DetailGridData { get; set; }
+    protected override async Task OnInitializedAsync()
+    {
+       
+    }
+    
+}
